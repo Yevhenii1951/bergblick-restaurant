@@ -13,6 +13,7 @@ export const ru: Dictionary = {
     contact: 'Контакты',
     reservation: 'Забронировать стол',
     takeaway: 'Заказать',
+    orders: 'Мои заказы',
   },
 
   hero: {

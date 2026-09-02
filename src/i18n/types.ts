@@ -10,6 +10,7 @@ export interface Dictionary {
     contact: string
     reservation: string
     takeaway: string
+    orders: string
   }
 
   hero: {

@@ -26,7 +26,8 @@ const navItems = [
   { label: dict.nav.menu, href: `/${locale}/menu/` },
   { label: dict.nav.about, href: `/${locale}/about/` },
   { label: dict.nav.contact, href: `/${locale}/contact/` },
-  { label: 'Mein Konto', href: '/track/' },
+  { label: dict.nav.reservation, href: `/${locale}/reservation/` },
+  { label: dict.nav.orders, href: `/track/`, green: true },
 ]
 ---
 
@@ -47,7 +48,9 @@ const navItems = [
         <li>
           <a
             href={item.href}
-            class="rounded-full px-4 py-2 text-sm font-medium text-base-content/80 transition-colors hover:bg-base-200 hover:text-base-content"
+            class={`rounded-full px-4 py-2 text-sm font-medium transition-colors hover:bg-base-200 hover:text-base-content ${
+              'green' in item ? 'text-success!' : 'text-base-content/80'
+            }`}
           >
             {item.label}
           </a>
