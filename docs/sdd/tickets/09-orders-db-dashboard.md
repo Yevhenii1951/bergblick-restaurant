@@ -9,7 +9,7 @@
 ## Decisions
 - Deploy host: **Vercel** (Astro stays static; serverless HTTP functions in `/api/*.ts` auto-detected by Vercel).
 - Database: **Vercel Postgres** (`@vercel/postgres`), connection from `POSTGRES_URL` env.
-- Dashboard is **public demo** (owner stats, no auth).
+- Dashboard is protected by a simple **admin code** (owner password, env `ADMIN_CODE`). If not set, dashboard stays public (demo). Nav link added ("Mein Konto" -> /track/).
 - "My orders": **passwordless email + code** (no registration). In demo the code is returned in the API response (no real email service). Codes are one-time, short-lived.
 - Dashboard and "my orders" built on the existing stack (Astro + React islands + daisyUI), data via client fetch. No new chart/UI libs.
 

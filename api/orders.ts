@@ -82,6 +82,10 @@ async function handlePost(req: VercelRequest, res: VercelResponse) {
 async function handleGet(req: VercelRequest, res: VercelResponse) {
   const limit = Math.min(Math.max(Number(req.query.limit) || 20, 1), 100)
 
+  if (process.env.ADMIN_CODE && req.headers['x-admin-code'] !== process.env.ADMIN_CODE) {
+    return res.status(403).json({ error: 'Forbidden' })
+  }
+
   if (!process.env.POSTGRES_URL) {
     return res.status(200).json({ orders: [] })
   }

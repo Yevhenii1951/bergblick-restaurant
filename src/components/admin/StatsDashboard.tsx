@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, type FormEvent } from 'react'
 
 type ByDay = { day: string; orders: number; revenue_cents: number }
 type TopDish = { name: string; total_sold: number; revenue_cents: number }
@@ -41,23 +41,71 @@ export default function StatsDashboard() {
   const [stats, setStats] = useState<Stats | null>(null)
   const [orders, setOrders] = useState<OrderRow[]>([])
   const [error, setError] = useState('')
+  const [adminCode, setAdminCode] = useState('')
+  const [unauthorized, setUnauthorized] = useState(false)
 
   useEffect(() => {
-    void (async () => {
-      try {
-        const [statsRes, ordersRes] = await Promise.all([
-          fetch('/api/stats'),
-          fetch('/api/orders?limit=20'),
-        ])
-        const statsJson = (await statsRes.json()) as Stats
-        const ordersJson = (await ordersRes.json()) as { orders: OrderRow[] }
-        setStats(statsJson)
-        setOrders(ordersJson.orders)
-      } catch {
-        setError('Statistiken konnten nicht geladen werden.')
-      }
-    })()
+    const saved = window.localStorage.getItem('bergblick_admin')
+    if (saved) {
+      setAdminCode(saved)
+      load(saved)
+    } else {
+      setUnauthorized(true)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  async function load(code: string) {
+    setError('')
+    try {
+      const [statsRes, ordersRes] = await Promise.all([
+        fetch('/api/stats', { headers: { 'x-admin-code': code } }),
+        fetch('/api/orders?limit=20', { headers: { 'x-admin-code': code } }),
+      ])
+      if (statsRes.status === 403 || ordersRes.status === 403) {
+        window.localStorage.removeItem('bergblick_admin')
+        setUnauthorized(true)
+        return
+      }
+      const statsJson = (await statsRes.json()) as Stats
+      const ordersJson = (await ordersRes.json()) as { orders: OrderRow[] }
+      setStats(statsJson)
+      setOrders(ordersJson.orders)
+    } catch {
+      setError('Statistiken konnten nicht geladen werden.')
+    }
+  }
+
+  function submit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    window.localStorage.setItem('bergblick_admin', adminCode)
+    setUnauthorized(false)
+    load(adminCode)
+  }
+
+  if (unauthorized) {
+    return (
+      <form onSubmit={submit} className="mx-auto max-w-md space-y-5 rounded-xl border border-base-300 bg-base-100 p-7 shadow-sm">
+        <h2 className="font-display text-lg font-semibold">Zugangs-Code eingeben</h2>
+        <p className="text-sm text-base-content/60">
+          Geben Sie den Code des Restaurantbetreibers ein, um die Statistik zu sehen.
+        </p>
+        <label className="form-control gap-2.5">
+          <span className="label-text">Code</span>
+          <input
+            className="input input-bordered"
+            value={adminCode}
+            onChange={(e) => setAdminCode(e.target.value)}
+            required
+          />
+        </label>
+        {error && <p className="text-sm text-error">{error}</p>}
+        <button className="btn btn-primary w-full rounded-lg font-semibold" type="submit">
+          Öffnen
+        </button>
+      </form>
+    )
+  }
 
   if (error) {
     return <p className="text-error">{error}</p>

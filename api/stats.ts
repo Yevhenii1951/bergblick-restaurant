@@ -1,7 +1,10 @@
 import { sql } from '@vercel/postgres'
 import type { VercelRequest, VercelResponse } from '@vercel/node'
 
-export default async function handler(_req: VercelRequest, res: VercelResponse) {
+export default async function handler(req: VercelRequest, res: VercelResponse) {
+  if (process.env.ADMIN_CODE && req.headers['x-admin-code'] !== process.env.ADMIN_CODE) {
+    return res.status(403).json({ error: 'Forbidden' })
+  }
   if (!process.env.POSTGRES_URL) {
     return res.status(200).json({
       configured: false,
