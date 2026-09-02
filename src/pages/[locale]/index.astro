@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import Hero from '../../components/sections/Hero.astro'
+import Highlights from '../../components/sections/Highlights.astro'
+import MenuPreview from '../../components/sections/MenuPreview.astro'
+import { getDictionary } from '../../i18n'
+import { getMenu } from '../../lib/menu'
+import type { Locale } from '../../i18n/config'
+
+export async function getStaticPaths() {
+  const locales: Locale[] = ['de', 'ru', 'en']
+  return locales.map((locale) => ({ params: { locale } }))
+}
+
+const { locale } = Astro.params as { locale: Locale }
+const dict = getDictionary(locale)
+const sections = getMenu(locale)
+const preview = sections.slice(0, 3)
+---
+
+<BaseLayout locale={locale} title={dict.siteName}>
+  <Hero dict={dict} locale={locale} />
+  <Highlights dict={dict} />
+  <MenuPreview dict={dict} locale={locale} sections={preview} />
+</BaseLayout>

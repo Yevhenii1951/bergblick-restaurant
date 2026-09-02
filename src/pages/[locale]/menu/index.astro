@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro'
+import MenuSection from '../../../components/sections/MenuSection.astro'
+import { getDictionary } from '../../../i18n'
+import { getMenu } from '../../../lib/menu'
+import type { Locale } from '../../../i18n/config'
+
+export async function getStaticPaths() {
+  const locales: Locale[] = ['de', 'ru', 'en']
+  return locales.map((locale) => ({ params: { locale } }))
+}
+
+const { locale } = Astro.params as { locale: Locale }
+const dict = getDictionary(locale)
+const sections = getMenu(locale)
+---
+
+<BaseLayout locale={locale} title={dict.menu.title}>
+  <div class="mx-auto max-w-5xl px-6 py-16">
+    <h1 class="text-3xl font-bold">{dict.menu.title}</h1>
+    <p class="mt-2 text-base-content/70">{dict.menu.intro}</p>
+    <div class="mt-8">
+      {sections.map((section) => (
+        <MenuSection
+          dict={dict}
+          sectionName={section.name}
+          dishes={section.dishes}
+        />
+      ))}
+    </div>
+    <p class="mt-6 text-sm text-base-content/60">{dict.menu.allergenHint}</p>
+  </div>
+</BaseLayout>

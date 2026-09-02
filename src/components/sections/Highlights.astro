@@ -1,0 +1,25 @@
+---
+import type { Dictionary } from '../../i18n/types'
+
+interface Props {
+  dict: Dictionary
+}
+
+const { dict } = Astro.props
+---
+
+<section class="bg-base-100 py-16">
+  <div class="mx-auto max-w-7xl px-6">
+    <h2 class="text-center text-3xl font-bold">{dict.highlights.title}</h2>
+    <div class="mt-8 grid gap-6 md:grid-cols-3">
+      {dict.highlights.items.map((item) => (
+        <div class="card bg-base-200">
+          <div class="card-body">
+            <h3 class="card-title text-primary">{item.title}</h3>
+            <p>{item.text}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

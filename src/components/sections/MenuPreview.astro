@@ -1,0 +1,35 @@
+---
+import type { Dictionary } from '../../i18n/types'
+import type { Locale } from '../../i18n/config'
+import MenuSection from './MenuSection.astro'
+import type { LocalizedSection } from '../../lib/menu'
+
+interface Props {
+  dict: Dictionary
+  locale: Locale
+  sections: LocalizedSection[]
+}
+
+const { dict, locale, sections } = Astro.props
+---
+
+<section class="bg-base-200 py-16">
+  <div class="mx-auto max-w-7xl px-6">
+    <h2 class="text-3xl font-bold">{dict.menu.title}</h2>
+    <p class="mt-2 text-base-content/70">{dict.menu.intro}</p>
+    <div class="mt-8">
+      {sections.map((section) => (
+        <MenuSection
+          dict={dict}
+          sectionName={section.name}
+          dishes={section.dishes.slice(0, 4)}
+        />
+      ))}
+    </div>
+    <div class="mt-8 text-center">
+      <a href={`/${locale}/menu/`} class="btn btn-primary">
+        {dict.menu.title} →
+      </a>
+    </div>
+  </div>
+</section>

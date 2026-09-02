@@ -1,0 +1,32 @@
+---
+import type { Dictionary } from '../../i18n/types'
+import type { Locale } from '../../i18n/config'
+
+interface Props {
+  dict: Dictionary
+  locale: Locale
+}
+
+const { dict, locale } = Astro.props
+---
+
+<section class="relative overflow-hidden bg-primary text-primary-content">
+  <div class="absolute inset-0">
+    <img
+      src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4"
+      alt=""
+      class="h-full w-full object-cover opacity-30"
+      loading="eager"
+    />
+    <div class="absolute inset-0 bg-gradient-to-r from-primary to-black/60" />
+  </div>
+
+  <div class="relative mx-auto max-w-7xl px-6 py-24 md:py-32 text-center">
+    <h1 class="text-4xl font-black md:text-6xl">{dict.hero.title}</h1>
+    <p class="mx-auto mt-4 max-w-2xl text-lg md:text-xl">{dict.hero.subtitle}</p>
+    <div class="mt-8 flex flex-wrap justify-center gap-3">
+      <a href={`/${locale}/menu/`} class="btn btn-accent btn-lg">{dict.hero.ctaMenu}</a>
+      <a href={`/${locale}/contact/`} class="btn btn-outline btn-lg text-primary-content border-primary-content">{dict.hero.ctaReserve}</a>
+    </div>
+  </div>
+</section>

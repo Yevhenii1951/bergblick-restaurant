@@ -1,0 +1,16 @@
+---
+import { defaultLocale } from '../i18n/config'
+
+if (!import.meta.env.SSR) {
+  window.location.replace(`/${defaultLocale}/`)
+}
+
+export async function getStaticPaths() {
+  return [{ params: {} }]
+}
+---
+
+<meta charset="utf-8" />
+<title>Bergblick</title>
+<meta http-equiv="refresh" content={`0;url=/${defaultLocale}/`} />
+<a href={`/${defaultLocale}/`}>{defaultLocale}</a>
