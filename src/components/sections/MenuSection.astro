@@ -1,58 +1,50 @@
 ---
 import type { Dictionary } from '../../i18n/types'
-import AddToCartButton from '../cart/AddToCartButton'
+import DishCard from '../cart/DishCard'
+import ScrollReveal from '../effects/ScrollReveal'
+
+interface Dish {
+  id: string
+  name: string
+  description: string
+  price: number
+  vegetarian: boolean
+  image?: string
+}
 
 interface Props {
   dict: Dictionary
+  sectionKey: string
   sectionName: string
-  dishes: {
-    id: string
-    name: string
-    description: string
-    price: number
-    vegetarian: boolean
-    image?: string
-  }[]
+  dishes: Dish[]
 }
 
-const { dict, sectionName, dishes } = Astro.props
+const { dict, sectionKey, sectionName, dishes } = Astro.props
 ---
 
-<div class="mb-10">
-  <h2 class="text-2xl font-bold text-primary">{sectionName}</h2>
-  <div class="mt-4 grid gap-4 md:grid-cols-2">
-    {dishes.map((dish) => (
-      <div class="card card-side bg-base-200 shadow-sm">
-        {dish.image && (
-          <figure class="w-32 shrink-0">
-            <img
-              src={dish.image}
-              alt={dish.name}
-              class="h-full w-full object-cover"
-              loading="lazy"
-            />
-          </figure>
-        )}
-        <div class="card-body py-4">
-          <div class="flex items-start justify-between gap-2">
-            <h3 class="card-title text-base">{dish.name}</h3>
-            <span class="font-bold whitespace-nowrap">{dish.price.toFixed(2)} €</span>
-          </div>
-          <p class="text-sm text-base-content/70">{dish.description}</p>
-          <div class="card-actions mt-2 items-center justify-between">
-            {dish.vegetarian && (
-              <span class="badge badge-accent badge-sm">{dict.menu.vegetarian}</span>
-            )}
-            <AddToCartButton
-              dishId={dish.id}
-              name={dish.name}
-              price={dish.price}
-              label={dict.menu.addToCart}
-              client:visible
-            />
-          </div>
-        </div>
-      </div>
+<section class="mb-14" id={sectionKey}>
+  <div class="mb-6 flex items-end justify-between gap-4 border-b border-base-300 pb-3">
+    <div>
+      <h2 class="font-display text-2xl font-semibold md:text-3xl">{sectionName}</h2>
+    </div>
+    <span aria-hidden="true" class="font-script text-2xl text-accent/70">✦</span>
+  </div>
+
+  <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    {dishes.map((dish, i) => (
+      <ScrollReveal delay={(i % 3) * 80} className="h-full">
+        <DishCard
+          id={dish.id}
+          name={dish.name}
+          description={dish.description}
+          price={dish.price}
+          vegetarian={dish.vegetarian}
+          image={dish.image}
+          vegLabel={dict.menu.vegetarian}
+          addToCartLabel={dict.menu.addToCart}
+          client:visible
+        />
+      </ScrollReveal>
     ))}
   </div>
-</div>
+</section>

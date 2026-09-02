@@ -17,6 +17,7 @@ export const de: Dictionary = {
 
   hero: {
     title: 'Willkommen im Bergblick',
+    scriptAccent: 'Herzlich willkommen – frisch aus der Küche',
     subtitle:
       'Herzhaft, heimisch, abwechslungsreich – deutsche Klassiker, vegetarische Genüsse und überraschende Fusion-Gerichte direkt im Herzen von Kassel.',
     ctaMenu: 'Zur Speisekarte',

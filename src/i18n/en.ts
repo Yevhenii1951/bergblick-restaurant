@@ -17,6 +17,7 @@ export const en: Dictionary = {
 
   hero: {
     title: 'Welcome to Bergblick',
+    scriptAccent: 'Welcome – fresh from our kitchen',
     subtitle:
       'Hearty, homely, varied – German classics, vegetarian delights and surprising fusion dishes right in the heart of Kassel.',
     ctaMenu: 'View menu',

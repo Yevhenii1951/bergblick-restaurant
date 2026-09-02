@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro'
 import MenuSection from '../../../components/sections/MenuSection.astro'
+import GradientText from '../../../components/effects/GradientText'
 import { getDictionary } from '../../../i18n'
 import { getMenu } from '../../../lib/menu'
 import type { Locale } from '../../../i18n/config'
@@ -16,18 +17,25 @@ const sections = getMenu(locale)
 ---
 
 <BaseLayout locale={locale} title={dict.menu.title}>
-  <div class="mx-auto max-w-5xl px-6 py-16">
-    <h1 class="text-3xl font-bold">{dict.menu.title}</h1>
-    <p class="mt-2 text-base-content/70">{dict.menu.intro}</p>
+  <div class="texture-wood mx-auto max-w-6xl px-6 py-16">
+    <div class="mx-auto mb-12 max-w-2xl text-center">
+      <p class="font-script text-2xl text-accent">{dict.tagline}</p>
+      <h1 class="mt-1 text-4xl font-semibold md:text-5xl">
+        <GradientText>{dict.menu.title}</GradientText>
+      </h1>
+      <p class="mt-3 text-base-content/70">{dict.menu.intro}</p>
+    </div>
+
     <div class="mt-8">
       {sections.map((section) => (
         <MenuSection
           dict={dict}
+          sectionKey={section.key}
           sectionName={section.name}
           dishes={section.dishes}
         />
       ))}
     </div>
-    <p class="mt-6 text-sm text-base-content/60">{dict.menu.allergenHint}</p>
+    <p class="mt-8 text-sm text-base-content/60">{dict.menu.allergenHint}</p>
   </div>
 </BaseLayout>

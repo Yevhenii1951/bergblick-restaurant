@@ -21,13 +21,14 @@ const { dict, locale, sections } = Astro.props
       {sections.map((section) => (
         <MenuSection
           dict={dict}
+          sectionKey={section.key}
           sectionName={section.name}
-          dishes={section.dishes.slice(0, 4)}
+          dishes={section.dishes.slice(0, 3)}
         />
       ))}
     </div>
-    <div class="mt-8 text-center">
-      <a href={`/${locale}/menu/`} class="btn btn-primary">
+    <div class="mt-10 text-center">
+      <a href={`/${locale}/menu/`} class="btn btn-primary btn-lg rounded-full px-8">
         {dict.menu.title} →
       </a>
     </div>

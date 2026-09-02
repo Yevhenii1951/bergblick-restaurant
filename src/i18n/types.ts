@@ -14,6 +14,7 @@ export interface Dictionary {
 
   hero: {
     title: string
+    scriptAccent: string
     subtitle: string
     ctaMenu: string
     ctaReserve: string

@@ -6,30 +6,40 @@
   prefersdark: false;
   color-scheme: light;
 
-  --color-base-100: oklch(98% 0.02 240);
-  --color-base-200: oklch(95% 0.03 240);
-  --color-base-300: oklch(92% 0.04 240);
-  --color-base-content: oklch(20% 0.05 240);
-  --color-primary: oklch(55% 0.3 240);
-  --color-primary-content: oklch(98% 0.01 240);
-  --color-secondary: oklch(70% 0.25 200);
-  --color-secondary-content: oklch(98% 0.01 200);
-  --color-accent: oklch(65% 0.25 160);
-  --color-accent-content: oklch(98% 0.01 160);
-  --color-neutral: oklch(50% 0.05 240);
-  --color-neutral-content: oklch(98% 0.01 240);
-  --color-info: oklch(70% 0.2 220);
+  /* Warm light-wood / oak palette */
+  --color-base-100: oklch(96% 0.02 80);
+  --color-base-200: oklch(93% 0.025 80);
+  --color-base-300: oklch(88% 0.03 80);
+  --color-base-content: oklch(28% 0.035 60);
+
+  /* Amber / brass */
+  --color-primary: oklch(63% 0.14 70);
+  --color-primary-content: oklch(98% 0.01 80);
+
+  /* Forest green */
+  --color-secondary: oklch(42% 0.06 140);
+  --color-secondary-content: oklch(97% 0.01 140);
+
+  /* Terracotta */
+  --color-accent: oklch(58% 0.13 45);
+  --color-accent-content: oklch(98% 0.01 45);
+
+  /* Warm charcoal */
+  --color-neutral: oklch(29% 0.03 60);
+  --color-neutral-content: oklch(96% 0.015 80);
+
+  --color-info: oklch(62% 0.1 220);
   --color-info-content: oklch(98% 0.01 220);
-  --color-success: oklch(65% 0.25 140);
-  --color-success-content: oklch(98% 0.01 140);
-  --color-warning: oklch(80% 0.25 80);
-  --color-warning-content: oklch(20% 0.05 80);
-  --color-error: oklch(65% 0.3 30);
+  --color-success: oklch(58% 0.12 150);
+  --color-success-content: oklch(98% 0.01 150);
+  --color-warning: oklch(82% 0.14 80);
+  --color-warning-content: oklch(25% 0.04 60);
+  --color-error: oklch(60% 0.18 30);
   --color-error-content: oklch(98% 0.01 30);
 
-  --radius-selector: 1rem;
-  --radius-field: 0.25rem;
-  --radius-box: 0.5rem;
+  --radius-selector: 0.75rem;
+  --radius-field: 0.5rem;
+  --radius-box: 1.25rem;
 
   --size-selector: 0.25rem;
   --size-field: 0.25rem;
@@ -40,6 +50,86 @@
   --noise: 0;
 }
 
-html {
-  scroll-behavior: smooth;
+@layer base {
+  :root {
+    --font-display: "Fraunces Variable", Georgia, "Times New Roman", serif;
+    --font-sans: "Manrope Variable", ui-sans-serif, system-ui, sans-serif;
+    --font-script: "Caveat", "Comic Sans MS", cursive;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    letter-spacing: 0.01em;
+  }
+
+  h1,
+  h2,
+  h3,
+  .font-display {
+    font-family: var(--font-display);
+    font-weight: 560;
+    letter-spacing: -0.01em;
+  }
+
+  .font-script {
+    font-family: var(--font-script);
+    font-weight: 600;
+  }
+}
+
+@layer utilities {
+  /* subtle wood-grain readable texture (very light) */
+  .texture-wood {
+    background-image:
+      radial-gradient(
+        1200px 500px at 80% -10%,
+        oklch(93% 0.03 85 / 0.5),
+        transparent 60%
+      ),
+      radial-gradient(
+        900px 400px at 10% 110%,
+        oklch(90% 0.03 60 / 0.4),
+        transparent 55%
+      );
+  }
+
+  .texture-dark {
+    background-image:
+      radial-gradient(
+        1000px 600px at 60% -20%,
+        oklch(35% 0.04 60 / 0.6),
+        transparent 60%
+      );
+  }
+}
+
+@keyframes gradient-move {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+.animate-gradient {
+  animation: gradient-move linear infinite;
+}
+
+.sr-hidden {
+  opacity: 0;
+  transform: var(--sr-offset, translateY(24px));
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+  will-change: opacity, transform;
+}
+
+.sr-visible {
+  opacity: 1;
+  transform: none;
 }

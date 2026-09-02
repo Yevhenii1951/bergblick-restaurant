@@ -1,6 +1,7 @@
 ---
 import type { Dictionary } from '../../i18n/types'
 import type { Locale } from '../../i18n/config'
+import TextLoop from '../effects/TextLoop'
 
 interface Props {
   dict: Dictionary
@@ -10,23 +11,39 @@ interface Props {
 const { dict, locale } = Astro.props
 ---
 
-<section class="relative overflow-hidden bg-primary text-primary-content">
+<section class="texture-dark relative overflow-hidden bg-neutral text-neutral-content">
   <div class="absolute inset-0">
     <img
-      src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4"
+      src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1920&auto=format&fit=crop"
       alt=""
-      class="h-full w-full object-cover opacity-30"
+      class="h-full w-full object-cover opacity-25"
       loading="eager"
     />
-    <div class="absolute inset-0 bg-gradient-to-r from-primary to-black/60" />
+    <div class="absolute inset-0 bg-gradient-to-b from-neutral/70 via-neutral/80 to-neutral/95" />
   </div>
 
-  <div class="relative mx-auto max-w-7xl px-6 py-24 md:py-32 text-center">
-    <h1 class="text-4xl font-black md:text-6xl">{dict.hero.title}</h1>
-    <p class="mx-auto mt-4 max-w-2xl text-lg md:text-xl">{dict.hero.subtitle}</p>
-    <div class="mt-8 flex flex-wrap justify-center gap-3">
-      <a href={`/${locale}/menu/`} class="btn btn-accent btn-lg">{dict.hero.ctaMenu}</a>
-      <a href={`/${locale}/contact/`} class="btn btn-outline btn-lg text-primary-content border-primary-content">{dict.hero.ctaReserve}</a>
+  <div class="relative mx-auto max-w-7xl px-6 pb-24 pt-28 md:pb-32 md:pt-40">
+    <p class="font-script text-3xl text-primary md:text-4xl">{dict.hero.scriptAccent}</p>
+    <h1 class="mt-3 max-w-3xl font-display text-5xl font-semibold leading-[1.02] md:text-7xl">
+      {dict.hero.title}
+    </h1>
+    <p class="mt-6 max-w-xl text-lg text-neutral-content/75 md:text-xl">{dict.hero.subtitle}</p>
+    <div class="mt-9 flex flex-wrap gap-3">
+      <a href={`/${locale}/menu/`} class="btn btn-primary btn-lg rounded-full px-7 shadow-lg shadow-primary/20">
+        {dict.hero.ctaMenu}
+      </a>
+      <a
+        href={`/${locale}/reservation/`}
+        class="btn btn-outline btn-lg rounded-full border-neutral-content/30 text-neutral-content hover:border-neutral-content hover:bg-neutral-content hover:text-neutral"
+      >
+        {dict.hero.ctaReserve}
+      </a>
     </div>
   </div>
+
+  <TextLoop
+    text="LECKER FRISCH REGIONAL"
+    className="relative z-10 w-full text-primary/80"
+    client:visible
+  />
 </section>

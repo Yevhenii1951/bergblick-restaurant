@@ -20,54 +20,62 @@ function stripLocale(p: string): string {
 }
 
 const base = stripLocale(pathname) || '/'
+
+const navItems = [
+  { label: dict.nav.home, href: `/${locale}/` },
+  { label: dict.nav.menu, href: `/${locale}/menu/` },
+  { label: dict.nav.about, href: `/${locale}/about/` },
+  { label: dict.nav.contact, href: `/${locale}/contact/` },
+]
 ---
 
-<nav class="navbar sticky top-0 z-[300] bg-base-100/90 backdrop-blur-md shadow-sm">
-  <div class="navbar-start">
-    <a href={`/${locale}/`} class="btn btn-ghost text-xl font-bold">
-      Bergblick
+<header class="sticky top-0 z-[300] border-b border-base-300/70 bg-base-100/85 backdrop-blur-md">
+  <nav class="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-6">
+    <a href={`/${locale}/`} class="group flex items-center gap-2">
+      <span class="grid h-10 w-10 place-items-center rounded-full bg-primary text-primary-content shadow">
+        <span aria-hidden="true" class="font-display text-lg font-black leading-none">B</span>
+      </span>
+      <span class="leading-none">
+        <span class="block font-display text-2xl font-semibold">Bergblick</span>
+        <span class="font-script text-lg leading-none text-accent">Restaurant &middot; Kassel</span>
+      </span>
     </a>
-  </div>
 
-  <div class="navbar-center hidden lg:flex">
-    <ul class="menu menu-horizontal px-1">
-      <li><a href={`/${locale}/`}>{dict.nav.home}</a></li>
-      <li><a href={`/${locale}/menu/`}>{dict.nav.menu}</a></li>
-      <li><a href={`/${locale}/about/`}>{dict.nav.about}</a></li>
-      <li><a href={`/${locale}/contact/`}>{dict.nav.contact}</a></li>
+    <ul class="hidden items-center gap-1 lg:flex">
+      {navItems.map((item) => (
+        <li>
+          <a
+            href={item.href}
+            class="rounded-full px-4 py-2 text-sm font-medium text-base-content/80 transition-colors hover:bg-base-200 hover:text-base-content"
+          >
+            {item.label}
+          </a>
+        </li>
+      ))}
     </ul>
-  </div>
 
-  <div class="navbar-end gap-2">
-    <div class="dropdown dropdown-end">
-      <div tabindex="0" role="button" class="btn btn-ghost btn-sm">
-        {localeNames[locale]} ▾
+    <div class="flex items-center gap-2">
+      <div class="dropdown dropdown-end">
+        <div tabindex="0" role="button" class="btn btn-ghost btn-sm">
+          <span aria-hidden="true">🌐</span>
+          <span class="uppercase">{localeNames[locale]}</span>
+        </div>
+        <ul tabindex="0" class="dropdown-content menu z-[400] mt-2 w-40 rounded-box border border-base-300 bg-base-100 shadow-xl">
+          {locales.map((l) => (
+            <li>
+              <a href={`/${l}${base}`} class={l === locale ? 'font-semibold text-primary' : ''}>
+                {localeNames[l]}
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
-      <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-[400] w-40 shadow-lg">
-        {locales.map((l) => (
-          <li>
-            <a href={`/${l}${base}`} class={l === locale ? 'active' : ''}>
-              {localeNames[l]}
-            </a>
-          </li>
-        ))}
-      </ul>
+
+      <a href={`/${locale}/takeaway/`} class="btn btn-primary btn-sm hidden md:inline-flex">
+        {dict.nav.takeaway}
+      </a>
+
+      <CartController dict={dict} checkoutHref={`/${locale}/takeaway/`} client:visible />
     </div>
-
-    <a href={`/${locale}/takeaway/`} class="btn btn-primary btn-sm hidden md:inline-flex">
-      {dict.nav.takeaway}
-    </a>
-
-    <CartController
-      dict={dict}
-      checkoutHref={`/${locale}/takeaway/`}
-      client:visible
-    />
-  </div>
-</nav>
-
-<style>
-  .navbar {
-    position: sticky;
-  }
-</style>
+  </nav>
+</header>

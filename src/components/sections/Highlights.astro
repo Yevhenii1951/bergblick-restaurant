@@ -1,24 +1,37 @@
 ---
 import type { Dictionary } from '../../i18n/types'
+import ScrollReveal from '../effects/ScrollReveal'
+import GradientText from '../effects/GradientText'
 
 interface Props {
   dict: Dictionary
 }
 
 const { dict } = Astro.props
+
+const icons = ['🍲', '🥗', '🍸']
 ---
 
-<section class="bg-base-100 py-16">
+<section class="texture-wood bg-base-100 py-20">
   <div class="mx-auto max-w-7xl px-6">
-    <h2 class="text-center text-3xl font-bold">{dict.highlights.title}</h2>
-    <div class="mt-8 grid gap-6 md:grid-cols-3">
-      {dict.highlights.items.map((item) => (
-        <div class="card bg-base-200">
-          <div class="card-body">
-            <h3 class="card-title text-primary">{item.title}</h3>
-            <p>{item.text}</p>
+    <div class="mx-auto max-w-2xl text-center">
+      <p class="font-script text-2xl text-accent">{dict.tagline}</p>
+      <h2 class="mt-1 text-3xl font-semibold md:text-4xl">
+        <GradientText>{dict.highlights.title}</GradientText>
+      </h2>
+    </div>
+
+    <div class="mt-12 grid gap-6 md:grid-cols-3">
+      {dict.highlights.items.map((item, i) => (
+        <ScrollReveal delay={i * 120} className="h-full">
+          <div class="h-full rounded-2xl border border-base-300 bg-base-100 p-7 shadow-sm transition-shadow hover:shadow-lg">
+            <span class="grid h-14 w-14 place-items-center rounded-2xl bg-base-200 text-3xl">
+              {icons[i % icons.length]}
+            </span>
+            <h3 class="mt-5 font-display text-xl font-semibold">{item.title}</h3>
+            <p class="mt-2 text-base-content/70">{item.text}</p>
           </div>
-        </div>
+        </ScrollReveal>
       ))}
     </div>
   </div>

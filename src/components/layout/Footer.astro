@@ -9,35 +9,62 @@ interface Props {
 }
 
 const { dict, locale } = Astro.props
+
+const links = [
+  { label: dict.nav.menu, href: `/${locale}/menu/` },
+  { label: dict.nav.about, href: `/${locale}/about/` },
+  { label: dict.nav.contact, href: `/${locale}/contact/` },
+  { label: dict.nav.takeaway, href: `/${locale}/takeaway/` },
+  { label: dict.nav.reservation, href: `/${locale}/reservation/` },
+]
 ---
 
-<footer class="bg-neutral text-neutral-content mt-16">
-  <div class="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-6 py-10 md:grid-cols-3">
-    <div>
-      <h3 class="mb-2 text-lg font-bold">{SITE.name}</h3>
-      <p>{dict.tagline}</p>
+<footer class="texture-dark mt-20 bg-neutral text-neutral-content">
+  <div class="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-6 py-14 md:grid-cols-4">
+    <div class="md:col-span-2">
+      <div class="flex items-center gap-2">
+        <span class="grid h-10 w-10 place-items-center rounded-full bg-primary text-primary-content">
+          <span class="font-display text-lg font-black leading-none">B</span>
+        </span>
+        <span class="leading-none">
+          <span class="block font-display text-2xl font-semibold">Bergblick</span>
+          <span class="font-script text-lg leading-none text-primary">Restaurant &middot; Kassel</span>
+        </span>
+      </div>
+      <p class="mt-4 max-w-md text-neutral-content/70">{dict.tagline}</p>
     </div>
+
     <div>
-      <h3 class="mb-2 text-lg font-bold">{dict.contact.hours}</h3>
-      <p>{SITE.hours}</p>
-      <p class="mt-2">{SITE.address.street}, {SITE.address.city}</p>
+      <h3 class="mb-3 font-display text-lg font-semibold">{dict.contact.hours}</h3>
+      <p class="text-neutral-content/70">{SITE.hours}</p>
+      <p class="mt-3 text-neutral-content/70">{SITE.address.street}, {SITE.address.city}</p>
+      <p class="mt-1 text-neutral-content/70">{SITE.phone}</p>
     </div>
+
     <div>
-      <h3 class="mb-2 text-lg font-bold">Links</h3>
+      <h3 class="mb-3 font-display text-lg font-semibold">{dict.siteName}</h3>
       <ul class="space-y-1">
-        <li><a class="link" href={`/${locale}/menu/`}>{dict.nav.menu}</a></li>
-        <li><a class="link" href={`/${locale}/about/`}>{dict.nav.about}</a></li>
-        <li><a class="link" href={`/${locale}/contact/`}>{dict.nav.contact}</a></li>
+        {links.map((l) => (
+          <li>
+            <a class="text-neutral-content/70 transition-colors hover:text-primary" href={l.href}>
+              {l.label}
+            </a>
+          </li>
+        ))}
       </ul>
     </div>
   </div>
 
-  <div class="border-t border-neutral-content/20 px-6 py-4">
+  <div class="border-t border-neutral-content/15 px-6 py-4">
     <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 text-sm md:flex-row">
       <p>© {new Date().getFullYear()} {SITE.name}. {dict.footer.rights}</p>
       <div class="flex gap-4">
-        <a class="link" href={`/${locale}/legal/impressum/`}>{dict.legal.impressum}</a>
-        <a class="link" href={`/${locale}/legal/datenschutz/`}>{dict.legal.datenschutz}</a>
+        <a class="transition-colors hover:text-primary" href={`/${locale}/legal/impressum/`}>
+          {dict.legal.impressum}
+        </a>
+        <a class="transition-colors hover:text-primary" href={`/${locale}/legal/datenschutz/`}>
+          {dict.legal.datenschutz}
+        </a>
       </div>
     </div>
   </div>
