@@ -16,6 +16,7 @@ const links = [
   { label: dict.nav.contact, href: `/${locale}/contact/` },
   { label: dict.nav.takeaway, href: `/${locale}/takeaway/` },
   { label: dict.nav.reservation, href: `/${locale}/reservation/` },
+  { label: dict.nav.orders, href: `/track/`, green: true },
 ]
 ---
 
@@ -46,7 +47,10 @@ const links = [
       <ul class="space-y-1">
         {links.map((l) => (
           <li>
-            <a class="text-neutral-content/70 transition-colors hover:text-primary" href={l.href}>
+            <a
+              class={`transition-colors hover:text-primary ${'green' in l ? 'text-success' : 'text-neutral-content/70'}`}
+              href={l.href}
+            >
               {l.label}
             </a>
           </li>
