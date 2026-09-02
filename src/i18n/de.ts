@@ -49,6 +49,8 @@ export const de: Dictionary = {
     vegetarian: 'Vegetarisch',
     allergenHint: 'Allergene und Zusatzstoffe erfragen Sie bitte direkt im Haus.',
     addToCart: 'Hinzufügen',
+    previewTitle: 'Beliebte Gerichte',
+    previewCta: 'Speisekarte ansehen',
   },
 
   gallery: {

@@ -31,6 +31,8 @@ export interface Dictionary {
     vegetarian: string
     allergenHint: string
     addToCart: string
+    previewTitle: string
+    previewCta: string
   }
 
   gallery: {

@@ -48,6 +48,8 @@ export const en: Dictionary = {
     vegetarian: 'Vegetarian',
     allergenHint: 'Please ask about allergens and additives directly in-house.',
     addToCart: 'Add',
+    previewTitle: 'Popular Dishes',
+    previewCta: 'View menu',
   },
 
   gallery: {

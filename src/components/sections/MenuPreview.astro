@@ -15,8 +15,15 @@ const { dict, locale, sections } = Astro.props
 
 <section class="bg-base-200 py-16">
   <div class="mx-auto max-w-7xl px-6">
-    <h2 class="text-3xl font-bold">{dict.menu.title}</h2>
-    <p class="mt-2 text-base-content/70">{dict.menu.intro}</p>
+    <div class="flex flex-wrap items-end justify-between gap-4">
+      <div>
+        <h2 class="text-3xl font-bold">{dict.menu.previewTitle}</h2>
+        <p class="mt-2 text-base-content/70">{dict.menu.intro}</p>
+      </div>
+      <a href={`/${locale}/menu/`} class="text-sm font-semibold text-primary hover:underline">
+        {dict.menu.previewCta} →
+      </a>
+    </div>
     <div class="mt-8">
       {sections.map((section) => (
         <MenuSection
@@ -29,7 +36,7 @@ const { dict, locale, sections } = Astro.props
     </div>
     <div class="mt-10 text-center">
       <a href={`/${locale}/menu/`} class="btn btn-primary btn-lg rounded-full px-8">
-        {dict.menu.title} →
+        {dict.menu.previewTitle} →
       </a>
     </div>
   </div>

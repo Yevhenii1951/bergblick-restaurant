@@ -48,6 +48,8 @@ export const ru: Dictionary = {
     vegetarian: 'Вегетарианское',
     allergenHint: 'Об аллергенах и добавках спрашивайте, пожалуйста, у нас на месте.',
     addToCart: 'Добавить',
+    previewTitle: 'Популярные блюда',
+    previewCta: 'Смотреть меню',
   },
 
   gallery: {
