@@ -105,7 +105,7 @@ export default function CartDrawer({ dict, open, onClose, checkoutHref }: CartDr
           </div>
 
           {count > 0 && (
-            <a href={checkoutHref} className="btn btn-primary w-full rounded-lg font-semibold text-success">
+            <a href={checkoutHref} className="btn btn-primary w-full rounded-lg font-semibold text-success!">
               {dict.takeaway.order}
             </a>
           )}
