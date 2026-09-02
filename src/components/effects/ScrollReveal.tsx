@@ -26,10 +26,12 @@ export default function ScrollReveal({
   useEffect(() => {
     const el = ref.current
     if (!el) return
+    el.classList.add('sr-hidden')
     const io = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
           if (entry.isIntersecting) {
+            el.classList.remove('sr-hidden')
             el.classList.add('sr-visible')
             io.unobserve(el)
           }
@@ -44,7 +46,7 @@ export default function ScrollReveal({
   return (
     <div
       ref={ref}
-      className={`sr-hidden ${className}`}
+      className={className}
       style={{ transitionDelay: `${delay}ms`, '--sr-offset': offset[direction] } as React.CSSProperties}
     >
       {children}

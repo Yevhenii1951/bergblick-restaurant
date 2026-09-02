@@ -120,7 +120,7 @@
   animation: gradient-move linear infinite;
 }
 
-.sr-hidden {
+.js .sr-hidden {
   opacity: 0;
   transform: var(--sr-offset, translateY(24px));
   transition:
@@ -129,7 +129,7 @@
   will-change: opacity, transform;
 }
 
-.sr-visible {
+.js .sr-visible {
   opacity: 1;
   transform: none;
 }
