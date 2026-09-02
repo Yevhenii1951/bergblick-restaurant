@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro'
 import LocationMap from '../../../components/LocationMap.tsx'
+import ScrollReveal from '../../../components/effects/ScrollReveal'
+import GradientText from '../../../components/effects/GradientText'
 import { getDictionary } from '../../../i18n'
 import { SITE } from '../../../lib/config'
 import type { Locale } from '../../../i18n/config'
@@ -15,25 +17,47 @@ const dict = getDictionary(locale)
 ---
 
 <BaseLayout locale={locale} title={dict.contact.title}>
-  <div class="mx-auto max-w-6xl px-6 py-16">
-    <h1 class="text-3xl font-bold">{dict.contact.title}</h1>
-
-    <div class="mt-8 grid gap-8 lg:grid-cols-2">
-      <section class="card bg-base-200">
-        <div class="card-body">
-          <h2 class="card-title">{dict.contact.address}</h2>
-          <p>{SITE.address.street}</p>
-          <p>{SITE.address.city}</p>
-
-          <h2 class="card-title mt-4">{dict.contact.hours}</h2>
-          <p>{SITE.hours}</p>
-
-          <h2 class="card-title mt-4">{dict.contact.phone}</h2>
-          <a class="link" href={`tel:${SITE.phone}`}>{SITE.phone}</a>
+  <section class="texture-wood bg-base-100">
+    <div class="mx-auto max-w-6xl px-6 py-16 md:py-24">
+      <ScrollReveal>
+        <div class="mx-auto mb-12 max-w-2xl text-center">
+          <p class="font-script text-2xl text-accent md:text-3xl">{dict.tagline}</p>
+          <h1 class="mt-2 text-4xl font-semibold md:text-5xl">
+            <GradientText>{dict.contact.title}</GradientText>
+          </h1>
         </div>
-      </section>
+      </ScrollReveal>
 
-      <LocationMap dict={dict} client:only="react" />
+      <div class="grid gap-8 lg:grid-cols-2">
+        <ScrollReveal delay={120}>
+          <section class="h-full rounded-3xl border border-base-300 bg-base-100 p-8 shadow-sm">
+            <div class="flex items-center gap-3">
+              <span class="grid h-11 w-11 place-items-center rounded-2xl bg-primary/10 text-xl">📍</span>
+              <h2 class="font-display text-xl font-semibold">{dict.contact.address}</h2>
+            </div>
+            <p class="mt-4 text-base-content/80">{SITE.address.street}</p>
+            <p class="text-base-content/80">{SITE.address.city}</p>
+
+            <div class="mt-8 flex items-center gap-3">
+              <span class="grid h-11 w-11 place-items-center rounded-2xl bg-accent/10 text-xl">🕒</span>
+              <h2 class="font-display text-xl font-semibold">{dict.contact.hours}</h2>
+            </div>
+            <p class="mt-4 text-base-content/80">{SITE.hours}</p>
+
+            <div class="mt-8 flex items-center gap-3">
+              <span class="grid h-11 w-11 place-items-center rounded-2xl bg-secondary/10 text-xl">📞</span>
+              <h2 class="font-display text-xl font-semibold">{dict.contact.phone}</h2>
+            </div>
+            <a class="mt-4 inline-block text-lg font-semibold text-primary hover:underline" href={`tel:${SITE.phone}`}>
+              {SITE.phone}
+            </a>
+          </section>
+        </ScrollReveal>
+
+        <ScrollReveal delay={240} direction="left">
+          <LocationMap dict={dict} client:only="react" />
+        </ScrollReveal>
+      </div>
     </div>
-  </div>
+  </section>
 </BaseLayout>

@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro'
 import OrderForm from '../../../components/cart/OrderForm'
+import ScrollReveal from '../../../components/effects/ScrollReveal'
+import GradientText from '../../../components/effects/GradientText'
 import { getDictionary } from '../../../i18n'
 import type { Locale } from '../../../i18n/config'
 
@@ -14,11 +16,23 @@ const dict = getDictionary(locale)
 ---
 
 <BaseLayout locale={locale} title={dict.takeaway.title}>
-  <div class="mx-auto max-w-3xl px-6 py-16">
-    <h1 class="text-3xl font-bold">{dict.takeaway.title}</h1>
-    <p class="mt-2 text-base-content/70">{dict.takeaway.subtitle}</p>
-    <div class="mt-8">
-      <OrderForm dict={dict} client:only="react" />
+  <section class="texture-wood bg-base-100">
+    <div class="mx-auto max-w-3xl px-6 py-16 md:py-24">
+      <ScrollReveal>
+        <div class="text-center">
+          <p class="font-script text-2xl text-accent md:text-3xl">{dict.tagline}</p>
+          <h1 class="mt-2 text-4xl font-semibold md:text-5xl">
+            <GradientText>{dict.takeaway.title}</GradientText>
+          </h1>
+          <p class="mt-4 text-base-content/70">{dict.takeaway.subtitle}</p>
+        </div>
+      </ScrollReveal>
+
+      <ScrollReveal delay={150}>
+        <div class="mt-10 rounded-3xl border border-base-300 bg-base-100 p-6 shadow-sm md:p-8">
+          <OrderForm dict={dict} client:only="react" />
+        </div>
+      </ScrollReveal>
     </div>
-  </div>
+  </section>
 </BaseLayout>

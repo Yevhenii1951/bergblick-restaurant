@@ -53,7 +53,7 @@ export default function OrderForm({ dict }: { dict: Dictionary }) {
         <p className="py-8 text-center text-base-content/60">{dict.takeaway.empty}</p>
       ) : (
         <form onSubmit={handleSubmit} className="card bg-base-200 p-6">
-          <h2 className="mb-4 text-xl font-bold">{dict.takeaway.order}</h2>
+          <h2 className="mb-4 font-display text-xl font-semibold">{dict.takeaway.order}</h2>
 
           <ul className="mb-4 space-y-1 text-sm">
             {items.map((item) => (
@@ -125,7 +125,11 @@ export default function OrderForm({ dict }: { dict: Dictionary }) {
             <p className="mb-2 text-sm text-success">{dict.takeaway.success}</p>
           )}
 
-          <button className="btn btn-primary" type="submit" disabled={status === 'sending'}>
+          <button
+            className="btn btn-primary w-full rounded-full font-semibold"
+            type="submit"
+            disabled={status === 'sending'}
+          >
             {status === 'sending' ? '…' : dict.takeaway.submit}
           </button>
         </form>

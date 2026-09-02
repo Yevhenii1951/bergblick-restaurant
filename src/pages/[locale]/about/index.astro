@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro'
+import ScrollReveal from '../../../components/effects/ScrollReveal'
+import GradientText from '../../../components/effects/GradientText'
 import { getDictionary } from '../../../i18n'
 import type { Locale } from '../../../i18n/config'
 
@@ -13,10 +15,32 @@ const dict = getDictionary(locale)
 ---
 
 <BaseLayout locale={locale} title={dict.about.title}>
-  <div class="mx-auto max-w-3xl px-6 py-16">
-    <h1 class="text-3xl font-bold">{dict.about.title}</h1>
-    <div class="mt-6 space-y-4 card bg-base-200 p-6">
-      <p>{dict.about.body}</p>
+  <section class="texture-wood relative overflow-hidden bg-base-100">
+    <div class="mx-auto max-w-3xl px-6 py-16 md:py-24">
+      <ScrollReveal>
+        <div class="text-center">
+          <p class="font-script text-2xl text-accent md:text-3xl">{dict.tagline}</p>
+          <h1 class="mt-2 text-4xl font-semibold md:text-5xl">
+            <GradientText>{dict.about.title}</GradientText>
+          </h1>
+        </div>
+      </ScrollReveal>
+
+      <ScrollReveal delay={150}>
+        <div class="mt-10 rounded-3xl border border-base-300 bg-base-100 p-8 shadow-sm md:p-10">
+          <p class="font-display text-xl leading-relaxed text-base-content/85 md:text-2xl">
+            {dict.about.body}
+          </p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href={`/${locale}/menu/`} class="btn btn-primary rounded-full px-6 shadow-lg shadow-primary/20">
+              {dict.hero.ctaMenu}
+            </a>
+            <a href={`/${locale}/reservation/`} class="btn btn-outline rounded-full border-base-300">
+              {dict.hero.ctaReserve}
+            </a>
+          </div>
+        </div>
+      </ScrollReveal>
     </div>
-  </div>
+  </section>
 </BaseLayout>

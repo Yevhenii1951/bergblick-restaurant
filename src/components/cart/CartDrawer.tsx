@@ -31,13 +31,17 @@ export default function CartDrawer({ dict, open, onClose, checkoutHref }: CartDr
     <div className="fixed inset-0 z-[500]">
       <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={onClose} />
       <aside
-        className="absolute right-0 top-0 h-full w-full max-w-md bg-base-100 shadow-2xl"
+        className="absolute right-0 top-0 h-full w-full max-w-md border-l border-base-300 bg-base-100 shadow-2xl"
         role="dialog"
         aria-label={dict.takeaway.cart}
       >
         <div className="flex items-center justify-between border-b border-base-300 px-5 py-4">
-          <h2 className="text-lg font-bold">{dict.takeaway.cart}</h2>
-          <button className="btn btn-ghost btn-sm" onClick={onClose} aria-label="Close">
+          <h2 className="font-display text-xl font-semibold">{dict.takeaway.cart}</h2>
+          <button
+            className="btn btn-ghost btn-sm btn-circle"
+            onClick={onClose}
+            aria-label="Close"
+          >
             ✕
           </button>
         </div>
@@ -101,7 +105,7 @@ export default function CartDrawer({ dict, open, onClose, checkoutHref }: CartDr
           </div>
 
           {count > 0 && (
-            <a href={checkoutHref} className="btn btn-primary w-full">
+            <a href={checkoutHref} className="btn btn-primary w-full rounded-full font-semibold">
               {dict.takeaway.order}
             </a>
           )}

@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { addDish, initCart } from '../../stores/cart'
+import Magnet from '../effects/Magnet'
 
 interface AddToCartButtonProps {
   dishId: string
@@ -14,8 +15,13 @@ export default function AddToCartButton({ dishId, name, price, label }: AddToCar
   }, [])
 
   return (
-    <button className="btn btn-primary btn-sm" onClick={() => addDish(dishId, name, price)}>
-      {label}
-    </button>
+    <Magnet strength={20}>
+      <button
+        className="btn btn-primary btn-sm rounded-full font-semibold"
+        onClick={() => addDish(dishId, name, price)}
+      >
+        {label}
+      </button>
+    </Magnet>
   )
 }

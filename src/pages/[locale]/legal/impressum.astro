@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro'
+import ScrollReveal from '../../../components/effects/ScrollReveal'
+import GradientText from '../../../components/effects/GradientText'
 import { getDictionary } from '../../../i18n'
 import { SITE } from '../../../lib/config'
 import type { Locale } from '../../../i18n/config'
@@ -14,31 +16,43 @@ const dict = getDictionary(locale)
 ---
 
 <BaseLayout locale={locale} title={dict.legal.impressum}>
-  <div class="mx-auto max-w-3xl px-6 py-16">
-    <h1 class="text-3xl font-bold">{dict.legal.impressum}</h1>
-    <div class="prose mt-6 space-y-4">
-      <p>
-        <strong>{SITE.name}</strong>
-        <br />
-        {SITE.address.street}
-        <br />
-        {SITE.address.city}
-      </p>
-      <p>
-        {dict.contact.phone}: {SITE.phone}
-      </p>
-      <p>
-        Geschäftsführung: Max Mustermann
-        <br />
-        Umsatzsteuer-ID: DE000000000
-      </p>
-      <p>
-        Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV: Max Mustermann
-      </p>
-      <p>
-        Hinweis: Dieses Projekt ist ein <em>Trainingsprojekt</em>. Die Inhalte sind fiktiv und
-        dienen ausschließlich Lernzwecken.
-      </p>
+  <section class="texture-wood bg-base-100">
+    <div class="mx-auto max-w-3xl px-6 py-16 md:py-24">
+      <ScrollReveal>
+        <div class="text-center">
+          <p class="font-script text-2xl text-accent md:text-3xl">{dict.tagline}</p>
+          <h1 class="mt-2 text-4xl font-semibold md:text-5xl">
+            <GradientText>{dict.legal.impressum}</GradientText>
+          </h1>
+        </div>
+      </ScrollReveal>
+
+      <ScrollReveal delay={150}>
+        <div class="prose mt-10 space-y-4 rounded-3xl border border-base-300 bg-base-100 p-8 shadow-sm">
+          <p>
+            <strong>{SITE.name}</strong>
+            <br />
+            {SITE.address.street}
+            <br />
+            {SITE.address.city}
+          </p>
+          <p>
+            {dict.contact.phone}: {SITE.phone}
+          </p>
+          <p>
+            Geschäftsführung: Max Mustermann
+            <br />
+            Umsatzsteuer-ID: DE000000000
+          </p>
+          <p>
+            Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV: Max Mustermann
+          </p>
+          <p>
+            Hinweis: Dieses Projekt ist ein <em>Trainingsprojekt</em>. Die Inhalte sind fiktiv und
+            dienen ausschließlich Lernzwecken.
+          </p>
+        </div>
+      </ScrollReveal>
     </div>
-  </div>
+  </section>
 </BaseLayout>
