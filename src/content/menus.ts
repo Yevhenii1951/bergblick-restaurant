@@ -1,0 +1,414 @@
+import type { Menu } from '../lib/menu.types'
+
+export const menus: Menu = [
+  {
+    key: 'vorspeisen',
+    name: { de: 'Vorspeisen', ru: 'Закуски', en: 'Starters' },
+    dishes: [
+      {
+        id: 'butterbrezel',
+        section: 'vorspeisen',
+        name: {
+          de: 'Hausgemachte Butterbrezel',
+          ru: 'Домашний масляный крендель',
+          en: 'Homemade butter pretzel',
+        },
+        description: {
+          de: 'Laugenbrezel mit selbst angeschlagener Butter und grobem Meersalz.',
+          ru: 'Крендель из щёлочного теста со взбитым маслом и крупной морской солью.',
+          en: 'Lye pretzel with homemade whipped butter and flaky sea salt.',
+        },
+        price: 4.9,
+        vegetarian: true,
+        image: 'https://images.unsplash.com/photo-1604908176997-125f25cc6f3d',
+      },
+      {
+        id: 'kartoffelsuppe',
+        section: 'vorspeisen',
+        name: {
+          de: 'Kartoffelsuppe mit Würstchen',
+          ru: 'Картофельный суп с сосиской',
+          en: 'Potato soup with sausage',
+        },
+        description: {
+          de: 'Cremige Kartoffelsuppe, dazu feine Bratwurstscheiben und Petersilie.',
+          ru: 'Кремовый картофельный суп с ломтиками жареной колбасы и петрушкой.',
+          en: 'Creamy potato soup with sliced fried sausage and parsley.',
+        },
+        price: 6.5,
+        vegetarian: false,
+        image: 'https://images.unsplash.com/photo-1547592166-23ac45744acd',
+      },
+      {
+        id: 'rinderbruehe-pancake',
+        section: 'vorspeisen',
+        name: {
+          de: 'Rinderbrühe mit Pfannkuchen',
+          ru: 'Говяжий бульон с блинчиком',
+          en: 'Beef broth with pancake',
+        },
+        description: {
+          de: 'Klare kräftige Rinderbrühe, geschnittener Eierpfannkuchen, Schnittlauch.',
+          ru: 'Прозрачный наваристый говяжий бульон с нарезанным яичным блинчиком и зелёным луком.',
+          en: 'Clear rich beef broth with sliced egg pancake and chives.',
+        },
+        price: 5.9,
+        vegetarian: false,
+      },
+      {
+        id: 'tomatencremesuppe',
+        section: 'vorspeisen',
+        name: {
+          de: 'Tomatencremesuppe vegan',
+          ru: 'Томатный крем-суп (веган)',
+          en: 'Vegan tomato cream soup',
+        },
+        description: {
+          de: 'Seidige Tomatensuppe mit Kokosmilch und frischem Basilikum.',
+          ru: 'Шёлковый томатный суп на кокосовом молоке со свежим базиликом.',
+          en: 'Silky tomato soup with coconut milk and fresh basil.',
+        },
+        price: 5.5,
+        vegetarian: true,
+      },
+    ],
+  },
+  {
+    key: 'hauptgerichte',
+    name: { de: 'Hauptgerichte', ru: 'Основные блюда', en: 'Main courses' },
+    dishes: [
+      {
+        id: 'schnitzel-wiener',
+        section: 'hauptgerichte',
+        name: {
+          de: 'Wiener Schnitzel',
+          ru: 'Венский шницель',
+          en: 'Wiener schnitzel',
+        },
+        description: {
+          de: 'Kalbschnitzel, paniert und goldgelb gebraten, mit Preiselbeeren, Zitrone und Salzkartoffeln.',
+          ru: 'Телячий шницель в панировке, жареный до золотистой корочки, с брусникой, лимоном и отварным картофелем.',
+          en: 'Veal cutlet crumbed and fried golden, with lingonberries, lemon and boiled potatoes.',
+        },
+        price: 17.9,
+        vegetarian: false,
+        image: 'https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2',
+      },
+      {
+        id: 'sauerbraten',
+        section: 'hauptgerichte',
+        name: {
+          de: 'Sauerbraten',
+          ru: 'Зауэрбратен (маринованная говядина)',
+          en: 'Sauerbraten',
+        },
+        description: {
+          de: '48 Stunden marinierte Rinderroulade, dazu Rotkohl und hausgemachte Knödel.',
+          ru: 'Говядина, маринованная 48 часов, с красной капустой и домашними клёцками.',
+          en: 'Beef marinated for 48 hours, with red cabbage and homemade dumplings.',
+        },
+        price: 18.5,
+        vegetarian: false,
+      },
+      {
+        id: 'kasseler-kohl',
+        section: 'hauptgerichte',
+        name: {
+          de: 'Kasseler mit Sauerkraut',
+          ru: 'Кашсер с квашеной капустой',
+          en: 'Smoked pork with sauerkraut',
+        },
+        description: {
+          de: 'Geräucherter Kasseler, geschmortes Sauerkraut und Kartoffelpüree.',
+          ru: 'Копчёный кашсер с тушёной квашеной капустой и картофельным пюре.',
+          en: 'Smoked pork cutlet with braised sauerkraut and mashed potatoes.',
+        },
+        price: 16.5,
+        vegetarian: false,
+      },
+      {
+        id: 'frikadellen',
+        section: 'hauptgerichte',
+        name: {
+          de: 'Hausgemachte Frikadellen',
+          ru: 'Домашние фрикадельки',
+          en: 'Homemade meatballs',
+        },
+        description: {
+          de: 'Zwei saftige Frikadellen mit Bratkartoffeln und Zwiebelsauce.',
+          ru: 'Две сочные фрикадельки с жареным картофелем и луковым соусом.',
+          en: 'Two juicy meatballs with pan-fried potatoes and onion sauce.',
+        },
+        price: 14.9,
+        vegetarian: false,
+      },
+      {
+        id: 'rumpsteak',
+        section: 'hauptgerichte',
+        name: {
+          de: 'Rumpsteak',
+          ru: 'Ромштекс',
+          en: 'Rump steak',
+        },
+        description: {
+          de: '250g Rumpsteak vom Grill, Kräuterbutter, Rösti und gemischter Salat.',
+          ru: 'Ромштекс 250 г на гриле, травяное масло, рёшти и овощной салат.',
+          en: '250g grilled rump steak, herb butter, rösti and mixed salad.',
+        },
+        price: 22.9,
+        vegetarian: false,
+      },
+    ],
+  },
+  {
+    key: 'vegetarisch',
+    name: { de: 'Vegetarisch', ru: 'Вегетарианское', en: 'Vegetarian' },
+    dishes: [
+      {
+        id: 'kaesespaezle',
+        section: 'vegetarisch',
+        name: {
+          de: 'Käsespätzle',
+          ru: 'Сырные шпецле',
+          en: 'Cheese spaetzle',
+        },
+        description: {
+          de: 'Hausgemachte Spätzle mit Bergkäse, karamellisierten Zwiebeln und Rucola.',
+          ru: 'Домашние шпецле с горным сыром, карамелизированным луком и рукколой.',
+          en: 'Homemade spaetzle with mountain cheese, caramelised onions and rocket.',
+        },
+        price: 13.5,
+        vegetarian: true,
+        image: 'https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9',
+      },
+      {
+        id: 'gemuese-risotto',
+        section: 'vegetarisch',
+        name: {
+          de: 'Ofengemüse-Risotto',
+          ru: 'Ризотто с печёными овощами',
+          en: 'Roasted vegetable risotto',
+        },
+        description: {
+          de: 'Cremiges Risotto mit Ofengemüse der Saison und Parmesanspänen.',
+          ru: 'Кремовое ризотто с сезонными печёными овощами и хлопьями пармезана.',
+          en: 'Creamy risotto with seasonal roasted vegetables and parmesan shavings.',
+        },
+        price: 14.5,
+        vegetarian: true,
+      },
+      {
+        id: 'bettina-kroketten',
+        section: 'vegetarisch',
+        name: {
+          de: 'Blumenkohl-Schnitzel',
+          ru: 'Шницель из цветной капусты',
+          en: 'Cauliflower schnitzel',
+        },
+        description: {
+          de: 'Panierter Blumenkohl, Zitronenremoulade und Kartoffelkroketten.',
+          ru: 'Цветная капуста в панировке с лимонным ремуладом и картофельными крокетами.',
+          en: 'Breaded cauliflower with lemon remoulade and potato croquettes.',
+        },
+        price: 13.9,
+        vegetarian: true,
+      },
+      {
+        id: 'curry-lauch-suppe',
+        section: 'vegetarisch',
+        name: {
+          de: 'Curry-Lauch-Suppe',
+          ru: 'Суп из лука-порея с карри',
+          en: 'Curry leek soup',
+        },
+        description: {
+          de: 'Wärmende Suppe mit Lauch, Kartoffeln und mildem Curry, dazu Baguette.',
+          ru: 'Согревающий суп с пореем, картофелем и мягким карри, с багетом.',
+          en: 'Warming soup with leek, potato and mild curry, served with baguette.',
+        },
+        price: 8.9,
+        vegetarian: true,
+      },
+    ],
+  },
+  {
+    key: 'fusion',
+    name: { de: 'Fusion', ru: 'Фьюжн', en: 'Fusion' },
+    dishes: [
+      {
+        id: 'currywurst-sushi',
+        section: 'fusion',
+        name: {
+          de: 'Currywurst-Sushi',
+          ru: 'Суши «карри-вурст»',
+          en: 'Currywurst sushi',
+        },
+        description: {
+          de: 'Kreative Fusion: Currywurst-Reispäckchen mit würziger Currysauce und Apfelmus-Tupfen.',
+          ru: 'Креативный фьюжн: рисовые рулетики с карри-вурст, пряным соусом карри и яблочным пюре.',
+          en: 'Creative fusion: currywurst rice parcels with spicy curry sauce and apple purée dots.',
+        },
+        price: 12.5,
+        vegetarian: false,
+        image: 'https://images.unsplash.com/photo-1579584425555-c3ce17fd4351',
+      },
+      {
+        id: 'ramen-koenigsberger',
+        section: 'fusion',
+        name: {
+          de: 'Königsberger Ramen',
+          ru: 'Кёнигсбергская рамен',
+          en: 'Königsberger ramen',
+        },
+        description: {
+          de: 'Ramen-Brühe trifft Königsberger Klopse mit Kapern und cremiger Sauce.',
+          ru: 'Бульон рамен встречает кёнигсбергские клопсы с каперсами и сливочным соусом.',
+          en: 'Ramen broth meets Königsberger meatballs with capers and creamy sauce.',
+        },
+        price: 15.9,
+        vegetarian: false,
+      },
+      {
+        id: 'sauerkraut-bao',
+        section: 'fusion',
+        name: {
+          de: 'Sauerkraut-Bao',
+          ru: 'Бао с квашеной капустой',
+          en: 'Sauerkraut bao buns',
+        },
+        description: {
+          de: 'Gedämpfte Bao-Buns gefüllt mit geschmortem Sauerkraut und geräuchertem Tofu.',
+          ru: 'Паровые булочки бао с тушёной квашеной капустой и копчёным тофу.',
+          en: 'Steamed bao buns filled with braised sauerkraut and smoked tofu.',
+        },
+        price: 11.5,
+        vegetarian: true,
+      },
+      {
+        id: 'spaetzle-tacos',
+        section: 'fusion',
+        name: {
+          de: 'Spätzle-Tacos',
+          ru: 'Тако из шпецле',
+          en: 'Spaetzle tacos',
+        },
+        description: {
+          de: 'Knusprig gebackene Spätzle-Tacos mit Pulled Pork und Koriander-Majo.',
+          ru: 'Хрустящие тако из шпецле с пуллед-порк и майо с кинзой.',
+          en: 'Crispy baked spaetzle tacos with pulled pork and coriander mayo.',
+        },
+        price: 14.9,
+        vegetarian: false,
+      },
+    ],
+  },
+  {
+    key: 'desserts',
+    name: { de: 'Desserts', ru: 'Десерты', en: 'Desserts' },
+    dishes: [
+      {
+        id: 'kuchen-sahne',
+        section: 'desserts',
+        name: {
+          de: 'Hausgemachter Apfelkuchen',
+          ru: 'Домашний яблочный пирог',
+          en: 'Homemade apple cake',
+        },
+        description: {
+          de: 'Warm servierter Apfelkuchen mit Schlagsahne und Zimt.',
+          ru: 'Тёплый яблочный пирог со взбитыми сливками и корицей.',
+          en: 'Apple cake served warm with whipped cream and cinnamon.',
+        },
+        price: 5.9,
+        vegetarian: true,
+        image: 'https://images.unsplash.com/photo-1621743478914-cc8a86d7e7b5',
+      },
+      {
+        id: 'schwarzwald',
+        section: 'desserts',
+        name: {
+          de: 'Schwarzwälder Kirschtorte',
+          ru: 'Шварцвальдский вишнёвый торт',
+          en: 'Black Forest gateau',
+        },
+        description: {
+          de: 'Klassische Schwarzwälder Kirschtorte mit Kirschwasser und Sahne.',
+          ru: 'Классический шварцвальдский торт с киршвассером и сливками.',
+          en: 'Classic Black Forest gateau with cherry brandy and cream.',
+        },
+        price: 6.5,
+        vegetarian: true,
+      },
+      {
+        id: 'panna-cotta-heidelbeere',
+        section: 'desserts',
+        name: {
+          de: 'Heidelbeer-Panna Cotta',
+          ru: 'Панна-котта с черникой',
+          en: 'Blueberry panna cotta',
+        },
+        description: {
+          de: 'Cremige Panna Cotta mit Heidelbeer-Kompott und Minze.',
+          ru: 'Нежная панна-котта с черничным компотом и мятой.',
+          en: 'Creamy panna cotta with blueberry compote and mint.',
+        },
+        price: 5.5,
+        vegetarian: true,
+      },
+    ],
+  },
+  {
+    key: 'getraenke',
+    name: { de: 'Getränke', ru: 'Напитки', en: 'Drinks' },
+    dishes: [
+      {
+        id: 'apfelschorle',
+        section: 'getraenke',
+        name: {
+          de: 'Apfelschorle',
+          ru: 'Яблочная шорле',
+          en: 'Apple spritzer',
+        },
+        description: {
+          de: 'Frischer Apfelsaft mit Sprudelwasser (0,4 l).',
+          ru: 'Свежий яблочный сок с газированной водой (0,4 л).',
+          en: 'Fresh apple juice with sparkling water (0.4 l).',
+        },
+        price: 3.2,
+        vegetarian: true,
+      },
+      {
+        id: 'kasseler-bier',
+        section: 'getraenke',
+        name: {
+          de: 'Hessisches Kellerbier',
+          ru: 'Гессенское келлербир',
+          en: 'Hessian cellar beer',
+        },
+        description: {
+          de: 'Ungefiltertes, süffiges Kellerbier vom Fass (0,5 l).',
+          ru: 'Нефильтрованное пиво из бочки (0,5 л).',
+          en: 'Unfiltered, smooth draft cellar beer (0.5 l).',
+        },
+        price: 4.5,
+        vegetarian: true,
+      },
+      {
+        id: 'gluehwein',
+        section: 'getraenke',
+        name: {
+          de: 'Glühwein',
+          ru: 'Глинтвейн',
+          en: 'Mulled wine',
+        },
+        description: {
+          de: 'Würziger Glühwein mit Orangenzeste und Sternanis.',
+          ru: 'Пряный глинтвейн с цедрой апельсина и звёздчатым анисом.',
+          en: 'Spiced mulled wine with orange zest and star anise.',
+        },
+        price: 5.0,
+        vegetarian: true,
+      },
+    ],
+  },
+]
