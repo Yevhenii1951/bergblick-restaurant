@@ -60,6 +60,13 @@ export interface Dictionary {
     quantity: string
     remove: string
     addToCart: string
+    pickup: string
+    delivery: string
+    subtotal: string
+    deliveryFee: string
+    deliveryInfo: string
+    cartHours: string
+    wishTime: string
   }
 
   reservation: {

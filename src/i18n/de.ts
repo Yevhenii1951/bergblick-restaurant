@@ -79,6 +79,13 @@ export const de: Dictionary = {
     quantity: 'Menge',
     remove: 'Entfernen',
     addToCart: 'In den Warenkorb',
+    pickup: 'Abholung',
+    delivery: 'Lieferung',
+    subtotal: 'Zwischensumme',
+    deliveryFee: 'Liefergebühr',
+    deliveryInfo: 'Lieferung frei ab 25 € · Abholung an der Wilhelmshöher Allee 112',
+    cartHours: '11:00 – 21:30 Uhr',
+    wishTime: 'Wunschzeit',
   },
 
   reservation: {

@@ -1,5 +1,6 @@
 export const DELIVERY = {
   freeDeliveryThreshold: 25,
+  deliveryFee: 3.5,
   currency: 'EUR',
   locale: 'de-DE',
 }

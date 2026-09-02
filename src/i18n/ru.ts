@@ -77,6 +77,13 @@ export const ru: Dictionary = {
     quantity: 'Количество',
     remove: 'Удалить',
     addToCart: 'В корзину',
+    pickup: 'Самовывоз',
+    delivery: 'Доставка',
+    subtotal: 'Промежуточный итог',
+    deliveryFee: 'Стоимость доставки',
+    deliveryInfo: 'Доставка бесплатно от 25 € · Самовывоз по адресу Wilhelmshöher Allee 112',
+    cartHours: '11:00 – 21:30',
+    wishTime: 'Желаемое время',
   },
 
   reservation: {

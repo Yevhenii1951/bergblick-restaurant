@@ -77,6 +77,13 @@ export const en: Dictionary = {
     quantity: 'Quantity',
     remove: 'Remove',
     addToCart: 'Add to cart',
+    pickup: 'Pickup',
+    delivery: 'Delivery',
+    subtotal: 'Subtotal',
+    deliveryFee: 'Delivery fee',
+    deliveryInfo: 'Free delivery from 25 € · Pickup at Wilhelmshöher Allee 112',
+    cartHours: '11:00 – 21:30',
+    wishTime: 'Wish time',
   },
 
   reservation: {
