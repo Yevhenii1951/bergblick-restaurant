@@ -1,7 +1,6 @@
 ---
 import type { Dictionary } from '../../i18n/types'
 import type { Locale } from '../../i18n/config'
-import TextLoop from '../effects/TextLoop'
 
 interface Props {
   dict: Dictionary
@@ -16,7 +15,7 @@ const { dict, locale } = Astro.props
     <img
       src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1920&auto=format&fit=crop"
       alt=""
-      class="h-full w-full object-cover opacity-25"
+      class="h-full w-full object-cover opacity-65"
       loading="eager"
     />
     <div class="absolute inset-0 bg-gradient-to-b from-neutral/70 via-neutral/80 to-neutral/95" />
@@ -41,9 +40,4 @@ const { dict, locale } = Astro.props
     </div>
   </div>
 
-  <TextLoop
-    text="LECKER FRISCH REGIONAL"
-    className="relative z-10 w-full text-primary/80"
-    client:visible
-  />
-</section>
+  </section>
