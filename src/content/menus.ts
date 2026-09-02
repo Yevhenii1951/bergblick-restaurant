@@ -54,6 +54,7 @@ export const menus: Menu = [
         },
         price: 5.9,
         vegetarian: false,
+        image: 'https://images.unsplash.com/photo-1551029506-0807df4e2031',
       },
       {
         id: 'tomatencremesuppe',
@@ -70,6 +71,7 @@ export const menus: Menu = [
         },
         price: 5.5,
         vegetarian: true,
+        image: 'https://images.unsplash.com/photo-1547592180-85f173990554',
       },
     ],
   },
@@ -109,6 +111,7 @@ export const menus: Menu = [
         },
         price: 18.5,
         vegetarian: false,
+        image: 'https://images.unsplash.com/photo-1544025162-d76694265947',
       },
       {
         id: 'kasseler-kohl',
@@ -125,6 +128,7 @@ export const menus: Menu = [
         },
         price: 16.5,
         vegetarian: false,
+        image: 'https://images.unsplash.com/photo-1467003909585-2f8a72700288',
       },
       {
         id: 'frikadellen',
@@ -141,6 +145,7 @@ export const menus: Menu = [
         },
         price: 14.9,
         vegetarian: false,
+        image: 'https://images.unsplash.com/photo-1529042410759-befb1204b468',
       },
       {
         id: 'rumpsteak',
@@ -157,6 +162,7 @@ export const menus: Menu = [
         },
         price: 22.9,
         vegetarian: false,
+        image: 'https://images.unsplash.com/photo-1432139555190-58524dae6a55',
       },
     ],
   },
@@ -196,6 +202,7 @@ export const menus: Menu = [
         },
         price: 14.5,
         vegetarian: true,
+        image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c',
       },
       {
         id: 'bettina-kroketten',
@@ -212,6 +219,7 @@ export const menus: Menu = [
         },
         price: 13.9,
         vegetarian: true,
+        image: 'https://images.unsplash.com/photo-1484723091739-30a097e8f929',
       },
       {
         id: 'curry-lauch-suppe',
@@ -228,6 +236,7 @@ export const menus: Menu = [
         },
         price: 8.9,
         vegetarian: true,
+        image: 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d',
       },
     ],
   },
@@ -267,6 +276,7 @@ export const menus: Menu = [
         },
         price: 15.9,
         vegetarian: false,
+        image: 'https://images.unsplash.com/photo-1567620832903-9fc6debc209f',
       },
       {
         id: 'sauerkraut-bao',
@@ -283,6 +293,7 @@ export const menus: Menu = [
         },
         price: 11.5,
         vegetarian: true,
+        image: 'https://images.unsplash.com/photo-1611143669185-af224c5e3252',
       },
       {
         id: 'spaetzle-tacos',
@@ -299,6 +310,7 @@ export const menus: Menu = [
         },
         price: 14.9,
         vegetarian: false,
+        image: 'https://images.unsplash.com/photo-1565299585323-38d6b0865b47',
       },
     ],
   },
@@ -338,6 +350,7 @@ export const menus: Menu = [
         },
         price: 6.5,
         vegetarian: true,
+        image: 'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9',
       },
       {
         id: 'panna-cotta-heidelbeere',
@@ -354,6 +367,7 @@ export const menus: Menu = [
         },
         price: 5.5,
         vegetarian: true,
+        image: 'https://images.unsplash.com/photo-1488477181946-6428a0291777',
       },
     ],
   },
@@ -376,6 +390,7 @@ export const menus: Menu = [
         },
         price: 3.2,
         vegetarian: true,
+        image: 'https://images.unsplash.com/photo-1544148103-0773bf10d330',
       },
       {
         id: 'kasseler-bier',
@@ -392,6 +407,7 @@ export const menus: Menu = [
         },
         price: 4.5,
         vegetarian: true,
+        image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002',
       },
       {
         id: 'gluehwein',
@@ -408,6 +424,7 @@ export const menus: Menu = [
         },
         price: 5.0,
         vegetarian: true,
+        image: 'https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2',
       },
     ],
   },
