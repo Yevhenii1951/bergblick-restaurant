@@ -26,6 +26,7 @@
     "astro": "^7.2.10",
     "daisyui": "^5.7.27",
     "leaflet": "^1.9.4",
+    "lucide-react": "^1.39.0",
     "motion": "^13.2.0",
     "nanostores": "^1.5.3",
     "react": "^19.2.8",

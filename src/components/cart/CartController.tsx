@@ -1,5 +1,6 @@
 import { useStore } from '@nanostores/react'
 import { useEffect, useState } from 'react'
+import { ShoppingCart } from 'lucide-react'
 import type { Dictionary } from '../../i18n/types'
 import { formatPrice } from '../../lib/takeaway'
 import { cartItems, initCart } from '../../stores/cart'
@@ -31,7 +32,7 @@ export default function CartController({
         onClick={() => setOpen(true)}
         aria-label={dict.takeaway.cart}
       >
-        <span>🛒</span>
+        <ShoppingCart aria-hidden="true" className="size-5 text-neutral" />
         <span className="badge badge-primary badge-sm">{count}</span>
         {ready && <span className="hidden sm:inline">{formatPrice(total)}</span>}
       </button>
