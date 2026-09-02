@@ -1,0 +1,34 @@
+---
+import type { Locale } from '../i18n/config'
+import { getDictionary } from '../i18n'
+import Nav from '../components/layout/Nav.astro'
+import Footer from '../components/layout/Footer.astro'
+import '../styles/global.css'
+
+interface Props {
+  locale: Locale
+  title: string
+  description?: string
+}
+
+const { locale, title, description } = Astro.props
+const dict = getDictionary(locale)
+---
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description ?? dict.description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title} · {dict.siteName}</title>
+  </head>
+  <body class="min-h-screen flex flex-col bg-base-100 text-base-content">
+    <Nav dict={dict} locale={locale} pathname={Astro.url.pathname} />
+    <main class="flex-1">
+      <slot />
+    </main>
+    <Footer dict={dict} locale={locale} />
+  </body>
+</html>
