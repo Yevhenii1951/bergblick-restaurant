@@ -3,10 +3,13 @@ import type { Dictionary } from '../i18n/types'
 
 export default function ReservationForm({ dict }: { dict: Dictionary }) {
   const [submitted, setSubmitted] = useState(false)
-  const [name, setName] = useState('')
   const [date, setDate] = useState('')
   const [time, setTime] = useState('')
   const [guests, setGuests] = useState('2')
+  const [name, setName] = useState('')
+  const [phone, setPhone] = useState('')
+  const [email, setEmail] = useState('')
+  const [note, setNote] = useState('')
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -19,17 +22,8 @@ export default function ReservationForm({ dict }: { dict: Dictionary }) {
 
   return (
     <form onSubmit={handleSubmit} className="card bg-base-200 p-6">
-      <label className="form-control mb-3">
-        <span className="label-text">{dict.takeaway.name}</span>
-        <input
-          className="input input-bordered"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-        />
-      </label>
       <div className="grid grid-cols-2 gap-3">
-        <label className="form-control mb-3">
+        <label className="form-control mb-3 gap-2.5">
           <span className="label-text">{dict.reservation.date}</span>
           <input
             className="input input-bordered"
@@ -39,7 +33,7 @@ export default function ReservationForm({ dict }: { dict: Dictionary }) {
             required
           />
         </label>
-        <label className="form-control mb-3">
+        <label className="form-control mb-3 gap-2.5">
           <span className="label-text">{dict.reservation.time}</span>
           <input
             className="input input-bordered"
@@ -50,7 +44,7 @@ export default function ReservationForm({ dict }: { dict: Dictionary }) {
           />
         </label>
       </div>
-      <label className="form-control mb-4">
+      <label className="form-control mb-3 gap-2.5">
         <span className="label-text">{dict.reservation.guests}</span>
         <input
           className="input input-bordered"
@@ -59,6 +53,43 @@ export default function ReservationForm({ dict }: { dict: Dictionary }) {
           max={30}
           value={guests}
           onChange={(e) => setGuests(e.target.value)}
+          required
+        />
+      </label>
+      <label className="form-control mb-3 gap-2.5">
+        <span className="label-text">{dict.reservation.name}</span>
+        <input
+          className="input input-bordered"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+        />
+      </label>
+      <label className="form-control mb-3 gap-2.5">
+        <span className="label-text">{dict.reservation.phone}</span>
+        <input
+          className="input input-bordered"
+          type="tel"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+          required
+        />
+      </label>
+      <label className="form-control mb-3 gap-2.5">
+        <span className="label-text">{dict.reservation.email}</span>
+        <input
+          className="input input-bordered"
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+      </label>
+      <label className="form-control mb-4 gap-2.5">
+        <span className="label-text">{dict.reservation.note}</span>
+        <textarea
+          className="textarea textarea-bordered"
+          value={note}
+          onChange={(e) => setNote(e.target.value)}
         />
       </label>
       <button type="submit" className="btn btn-primary w-full rounded-lg font-semibold">

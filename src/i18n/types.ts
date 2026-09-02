@@ -75,6 +75,10 @@ export interface Dictionary {
     date: string
     time: string
     guests: string
+    name: string
+    phone: string
+    email: string
+    note: string
     submit: string
     success: string
   }

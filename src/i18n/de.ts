@@ -94,7 +94,11 @@ export const de: Dictionary = {
     date: 'Datum',
     time: 'Uhrzeit',
     guests: 'Personen',
-    submit: 'Anfrage senden',
+    name: 'Name',
+    phone: 'Telefon',
+    email: 'E-Mail (optional)',
+    note: 'Anmerkung (optional)',
+    submit: 'Reservierung anfragen',
     success: 'Vielen Dank! Ihre Reservierungsanfrage wurde übermittelt.',
   },
 
