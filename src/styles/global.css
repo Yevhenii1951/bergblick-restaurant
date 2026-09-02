@@ -8,36 +8,36 @@
   prefersdark: false;
   color-scheme: light;
 
-  /* daisyUI 5 retro palette (cream, brick-red primary, olive secondary, yellow accent) */
-  --color-base-100: oklch(91.637% 0.034 90.515);
-  --color-base-200: oklch(88.272% 0.049 91.774);
-  --color-base-300: oklch(84.133% 0.065 90.856);
-  --color-base-content: oklch(41% 0.112 45.904);
+  /* daisyUI 5 retro-derived warm wood palette (cream + amber/caramel, no pink) */
+  --color-base-100: oklch(93% 0.02 85);
+  --color-base-200: oklch(90% 0.025 86);
+  --color-base-300: oklch(86% 0.03 86);
+  --color-base-content: oklch(35% 0.06 55);
 
-  /* Brick / terracotta red */
-  --color-primary: oklch(80% 0.114 19.571);
-  --color-primary-content: oklch(39% 0.141 25.723);
+  /* Warm caramel / amber-brown (not red/pink) */
+  --color-primary: oklch(58% 0.095 60);
+  --color-primary-content: oklch(97% 0.02 90);
 
-  /* Olive green */
-  --color-secondary: oklch(92% 0.084 155.995);
-  --color-secondary-content: oklch(44% 0.119 151.328);
+  /* Olive / sage green */
+  --color-secondary: oklch(85% 0.06 130);
+  --color-secondary-content: oklch(40% 0.07 130);
 
-  /* Yellow / amber */
-  --color-accent: oklch(68% 0.162 75.834);
-  --color-accent-content: oklch(41% 0.112 45.904);
+  /* Golden yellow */
+  --color-accent: oklch(72% 0.13 80);
+  --color-accent-content: oklch(35% 0.06 60);
 
-  /* Dark grey-brown */
-  --color-neutral: oklch(44% 0.011 73.639);
-  --color-neutral-content: oklch(86% 0.005 56.366);
+  /* Dark warm coffee brown */
+  --color-neutral: oklch(34% 0.05 55);
+  --color-neutral-content: oklch(90% 0.02 70);
 
-  --color-info: oklch(58% 0.158 241.966);
-  --color-info-content: oklch(96% 0.059 95.617);
-  --color-success: oklch(51% 0.096 186.391);
-  --color-success-content: oklch(96% 0.059 95.617);
-  --color-warning: oklch(64% 0.222 41.116);
-  --color-warning-content: oklch(96% 0.059 95.617);
-  --color-error: oklch(70% 0.191 22.216);
-  --color-error-content: oklch(40% 0.123 38.172);
+  --color-info: oklch(58% 0.15 240);
+  --color-info-content: oklch(98% 0.01 240);
+  --color-success: oklch(52% 0.11 150);
+  --color-success-content: oklch(98% 0.01 150);
+  --color-warning: oklch(76% 0.14 80);
+  --color-warning-content: oklch(28% 0.06 60);
+  --color-error: oklch(60% 0.19 28);
+  --color-error-content: oklch(98% 0.01 30);
 
   --radius-selector: 0.25rem;
   --radius-field: 0.25rem;
@@ -89,12 +89,12 @@
     background-image:
       radial-gradient(
         1200px 500px at 80% -10%,
-        oklch(91% 0.03 90 / 0.5),
+        oklch(92% 0.02 70 / 0.5),
         transparent 60%
       ),
       radial-gradient(
         900px 400px at 10% 110%,
-        oklch(88% 0.05 92 / 0.4),
+        oklch(87% 0.03 75 / 0.4),
         transparent 55%
       );
   }
@@ -103,7 +103,7 @@
     background-image:
       radial-gradient(
         1000px 600px at 60% -20%,
-        oklch(48% 0.02 70 / 0.6),
+        oklch(40% 0.05 55 / 0.6),
         transparent 60%
       );
   }
@@ -136,7 +136,7 @@
   transform: none;
 }
 
-/* Replaces daisyUI button background (var(--btn-bg)) with a warm translucent tone */
+/* Replaces daisyUI button background (var(--btn-bg)) with a warm wood tone */
 .btn {
-  background-color: rgb(71 54 73 / 30%) !important;
+  background-color: rgb(101 78 48 / 28%) !important;
 }
