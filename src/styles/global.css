@@ -1,5 +1,7 @@
 @import "tailwindcss";
-@plugin "daisyui";
+@plugin "daisyui" {
+  themes: mytheme --default;
+}
 @plugin "daisyui/theme" {
   name: "mytheme";
   default: true;
