@@ -161,7 +161,7 @@ export default function CartPage({ dict }: { dict: Dictionary }) {
               </p>
             )}
 
-            <label className="form-control mb-5 mt-4 gap-2.5">
+            <label className="form-control mb-5 mt-4 gap-4">
               <span className="label-text">{dict.takeaway.name}</span>
               <input
                 className="input input-bordered"
@@ -171,7 +171,7 @@ export default function CartPage({ dict }: { dict: Dictionary }) {
               />
             </label>
 
-            <label className="form-control mb-5 gap-2.5">
+            <label className="form-control mb-5 gap-4">
               <span className="label-text">{dict.takeaway.phone}</span>
               <input
                 className="input input-bordered"
@@ -182,7 +182,7 @@ export default function CartPage({ dict }: { dict: Dictionary }) {
               />
             </label>
 
-            <label className="form-control mb-5 gap-2.5">
+            <label className="form-control mb-5 gap-4">
               <span className="label-text">{dict.takeaway.email}</span>
               <input
                 className="input input-bordered"
@@ -192,7 +192,7 @@ export default function CartPage({ dict }: { dict: Dictionary }) {
               />
             </label>
 
-            <label className="form-control mb-5 gap-2.5">
+            <label className="form-control mb-5 gap-4">
               <span className="label-text">{dict.takeaway.wishTime}</span>
               <input
                 className="input input-bordered"
@@ -203,7 +203,7 @@ export default function CartPage({ dict }: { dict: Dictionary }) {
               />
             </label>
 
-            <label className="form-control gap-2.5">
+            <label className="form-control gap-4">
               <span className="label-text">{dict.takeaway.note}</span>
               <textarea
                 className="textarea textarea-bordered"
