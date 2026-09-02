@@ -104,10 +104,17 @@ export const de: Dictionary = {
   },
 
   contact: {
-    title: 'Kontakt & Anfahrt',
+    title: 'Kontakt',
+    city: 'Kassel',
+    subtitle:
+      'Wir freuen uns auf Ihren Anruf, Ihre Reservierung oder Ihren Besuch an der Wilhelmshöher Allee.',
     address: 'Adresse',
     hours: 'Öffnungszeiten',
     phone: 'Telefon',
+    deliveryTitle: 'Lieferung & Abholung',
+    deliveryHours: '11:00–21:30 Uhr',
+    freeDelivery: 'Lieferung frei ab 25 €',
+    reserve: 'Tisch reservieren',
     mapNotice: 'Karte nach Zustimmung laden',
   },
 

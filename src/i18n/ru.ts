@@ -102,10 +102,17 @@ export const ru: Dictionary = {
   },
 
   contact: {
-    title: 'Контакты и как нас найти',
+    title: 'Kontakt',
+    city: 'Kassel',
+    subtitle:
+      'Мы будем рады вашему звонку, брони или визиту по адресу Wilhelmshöher Allee.',
     address: 'Адрес',
     hours: 'Часы работы',
     phone: 'Телефон',
+    deliveryTitle: 'Доставка и самовывоз',
+    deliveryHours: '11:00–21:30',
+    freeDelivery: 'Доставка бесплатно от 25 €',
+    reserve: 'Забронировать стол',
     mapNotice: 'Загрузить карту после согласия',
   },
 

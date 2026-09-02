@@ -86,9 +86,15 @@ export interface Dictionary {
 
   contact: {
     title: string
+    city: string
+    subtitle: string
     address: string
     hours: string
     phone: string
+    deliveryTitle: string
+    deliveryHours: string
+    freeDelivery: string
+    reserve: string
     mapNotice: string
   }
 
