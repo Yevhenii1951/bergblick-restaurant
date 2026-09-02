@@ -4,6 +4,9 @@ import type { Dictionary } from '../i18n/types'
 import { SITE } from '../lib/config'
 import { consentGranted, getConsent, grantConsent } from '../stores/consent'
 
+const EMBED_URL =
+  'https://www.openstreetmap.org/export/embed.html?bbox=9.4545%2C51.2917%2C9.5065%2C51.3117&layer=mapnik&marker=51.3017%2C9.4805'
+
 export default function LocationMap({ dict }: { dict: Dictionary }) {
   const granted = useStore(consentGranted)
   const [nativeConsent, setNativeConsent] = useState(false)
@@ -11,29 +14,6 @@ export default function LocationMap({ dict }: { dict: Dictionary }) {
   useEffect(() => {
     setNativeConsent(getConsent())
   }, [])
-
-  useEffect(() => {
-    if (!granted && !nativeConsent) return
-    let cancelled = false
-    let L: any
-    async function load() {
-      const mod = await import('leaflet')
-      L = mod.default
-      if (cancelled) return
-      const map = L.map('bergblick-map').setView([SITE.coordinates.lat, SITE.coordinates.lng], 14)
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '© OpenStreetMap contributors',
-      }).addTo(map)
-      L.marker([SITE.coordinates.lat, SITE.coordinates.lng])
-        .addTo(map)
-        .bindPopup(SITE.name)
-        .openPopup()
-    }
-    load()
-    return () => {
-      cancelled = true
-    }
-  }, [granted, nativeConsent])
 
   const showMap = granted || nativeConsent
 
@@ -47,13 +27,12 @@ export default function LocationMap({ dict }: { dict: Dictionary }) {
           </button>
         </div>
       ) : (
-        <div
-          id="bergblick-map"
-          style={{ height: 320, width: '100%' }}
-          ref={(node) => {
-            // leaflet needs the container before init; the effect handles init after mount
-            void node
-          }}
+        <iframe
+          title={SITE.name}
+          className="block w-full"
+          style={{ height: 320 }}
+          loading="lazy"
+          src={EMBED_URL}
         />
       )}
     </div>
