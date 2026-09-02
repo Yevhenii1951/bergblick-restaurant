@@ -83,7 +83,7 @@ export default function MyOrders() {
   }
 
   return (
-    <form onSubmit={step === 'request' ? requestCode : verifyCode} className="space-y-7">
+    <form onSubmit={step === 'request' ? requestCode : verifyCode} className="space-y-10">
       <label className="form-control mb-7 gap-3">
         <span className="label-text">E-Mail</span>
         <input
@@ -118,7 +118,7 @@ export default function MyOrders() {
       {error && <p className="text-sm text-error">{error}</p>}
 
       {step !== 'done' && (
-        <button className="btn btn-primary w-full rounded-lg font-semibold" type="submit" disabled={loading}>
+        <button className="btn btn-primary w-full rounded-lg font-semibold text-success!" type="submit" disabled={loading}>
           {loading ? '…' : step === 'request' ? 'Code anfordern' : 'Bestätigen'}
         </button>
       )}
