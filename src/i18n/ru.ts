@@ -66,6 +66,7 @@ export const ru: Dictionary = {
     total: 'Итого',
     name: 'Имя',
     phone: 'Телефон',
+    email: 'E-Mail (необязательно)',
     pickupTime: 'Время самовывоза / доставки',
     note: 'Примечание (необязательно)',
     submit: 'Отправить заказ',

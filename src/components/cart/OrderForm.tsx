@@ -13,6 +13,7 @@ export default function OrderForm({ dict }: { dict: Dictionary }) {
   const items = useStore(cartItems)
   const [name, setName] = useState('')
   const [phone, setPhone] = useState('')
+  const [email, setEmail] = useState('')
   const [pickupTime, setPickupTime] = useState('')
   const [note, setNote] = useState('')
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle')
@@ -36,7 +37,21 @@ export default function OrderForm({ dict }: { dict: Dictionary }) {
       })),
       total,
       freeDelivery: free,
-      contact: { name, phone, pickupTime, note },
+      contact: { email, name, phone, pickupTime, note },
+    }
+    try {
+      await fetch('/api/orders', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          items: order.items.map(({ total: _t, ...rest }) => rest),
+          total,
+          freeDelivery: free,
+          contact: order.contact,
+        }),
+      })
+    } catch {
+      // DB offline (e.g. local dev) - order still delivered via Telegram
     }
     const ok = await sendOrderTelegram(order)
     if (ok) {
@@ -95,6 +110,16 @@ export default function OrderForm({ dict }: { dict: Dictionary }) {
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               required
+            />
+          </label>
+
+          <label className="form-control mb-5 gap-2.5">
+            <span className="label-text">{dict.takeaway.email}</span>
+            <input
+              className="input input-bordered"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </label>
 

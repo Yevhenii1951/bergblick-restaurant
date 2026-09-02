@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import StatsDashboard from '../../components/admin/StatsDashboard'
+---
+
+<BaseLayout locale="de" title="Statistik | Bergblick">
+  <section class="texture-wood py-16 md:py-24">
+    <div class="mx-auto max-w-6xl px-6">
+      <div class="mb-10">
+        <p class="font-script text-2xl text-primary md:text-3xl">Demo-Dashboard</p>
+        <h1 class="mt-2 text-4xl font-semibold md:text-5xl">Statistik &amp; Bestellungen</h1>
+        <p class="mt-4 max-w-2xl text-base-content/70">
+          Öffentliche Demo-Ansicht intern für den Betrieb. Bestelldaten werden in einer
+          Postgres-Datenbank über Vercel Functions gespeichert.
+        </p>
+      </div>
+      <StatsDashboard client:only="react" />
+    </div>
+  </section>
+</BaseLayout>

@@ -49,6 +49,7 @@ export interface Dictionary {
     total: string
     name: string
     phone: string
+    email: string
     pickupTime: string
     note: string
     submit: string

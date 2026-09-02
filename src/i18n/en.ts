@@ -66,6 +66,7 @@ export const en: Dictionary = {
     total: 'Total',
     name: 'Name',
     phone: 'Phone',
+    email: 'Email (optional)',
     pickupTime: 'Pickup / delivery time',
     note: 'Note (optional)',
     submit: 'Send order',

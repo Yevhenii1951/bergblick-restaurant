@@ -59,6 +59,9 @@ const links = [
     <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 text-sm md:flex-row">
       <p>© {new Date().getFullYear()} {SITE.name}. {dict.footer.rights}</p>
       <div class="flex gap-4">
+        <a class="transition-colors hover:text-primary" href="/track/">
+          Meine Bestellungen
+        </a>
         <a class="transition-colors hover:text-primary" href={`/${locale}/legal/impressum/`}>
           {dict.legal.impressum}
         </a>

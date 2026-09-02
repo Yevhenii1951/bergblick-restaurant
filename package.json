@@ -23,6 +23,7 @@
     "@tailwindcss/vite": "^4.3.3",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.5",
+    "@vercel/postgres": "^0.10.0",
     "astro": "^7.2.10",
     "daisyui": "^5.7.27",
     "leaflet": "^1.9.4",
@@ -40,6 +41,7 @@
     "@astrojs/check": "^0.9.10",
     "@types/leaflet": "^1.9.22",
     "@types/node": "^26.4.1",
+    "@vercel/node": "^12.0.0",
     "typescript": "^6.0.3",
     "vitest": "^4.1.11"
   }

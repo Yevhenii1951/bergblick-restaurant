@@ -68,6 +68,7 @@ export const de: Dictionary = {
     total: 'Gesamt',
     name: 'Name',
     phone: 'Telefon',
+    email: 'E-Mail (optional)',
     pickupTime: 'Abhol- / Lieferzeit',
     note: 'Anmerkung (optional)',
     submit: 'Bestellung absenden',

@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import MyOrders from '../../components/track/MyOrders'
+---
+
+<BaseLayout locale="de" title="Meine Bestellungen | Bergblick">
+  <section class="texture-wood bg-base-100">
+    <div class="mx-auto max-w-xl px-6 py-16 md:py-24">
+      <p class="font-script text-2xl text-primary md:text-3xl">Bestellstatus</p>
+      <h1 class="mt-2 text-4xl font-semibold md:text-5xl">Meine Bestellungen ansehen</h1>
+      <p class="mt-4 text-base-content/70">
+        Geben Sie Ihre E-Mail-Adresse ein und bestätigen Sie den erhaltenen Code, um Ihre
+        Bestellungen zu sehen.
+      </p>
+
+      <div class="mt-10 rounded-xl border border-base-300 bg-base-100 p-6 shadow-sm md:p-8">
+        <MyOrders client:only="react" />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
