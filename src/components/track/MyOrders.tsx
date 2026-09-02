@@ -83,8 +83,8 @@ export default function MyOrders() {
   }
 
   return (
-    <form onSubmit={step === 'request' ? requestCode : verifyCode} className="space-y-5">
-      <label className="form-control mb-5 gap-2.5">
+    <form onSubmit={step === 'request' ? requestCode : verifyCode} className="space-y-7">
+      <label className="form-control mb-7 gap-3">
         <span className="label-text">E-Mail</span>
         <input
           className="input input-bordered"
@@ -97,7 +97,7 @@ export default function MyOrders() {
       </label>
 
       {step === 'verify' && (
-        <label className="form-control mb-5 gap-2.5">
+        <label className="form-control mb-7 gap-3">
           <span className="label-text">Code</span>
           <input
             className="input input-bordered"
