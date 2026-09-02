@@ -23,7 +23,7 @@ export default function ReservationForm({ dict }: { dict: Dictionary }) {
   return (
     <form onSubmit={handleSubmit} className="card bg-base-200 p-6">
       <div className="grid grid-cols-2 gap-3">
-        <label className="form-control mb-3 gap-4">
+        <label className="form-control mb-3 gap-6">
           <span className="label-text">{dict.reservation.date}</span>
           <input
             className="input input-bordered"
@@ -33,7 +33,7 @@ export default function ReservationForm({ dict }: { dict: Dictionary }) {
             required
           />
         </label>
-        <label className="form-control mb-3 gap-4">
+        <label className="form-control mb-3 gap-6">
           <span className="label-text">{dict.reservation.time}</span>
           <input
             className="input input-bordered"
@@ -44,7 +44,7 @@ export default function ReservationForm({ dict }: { dict: Dictionary }) {
           />
         </label>
       </div>
-      <label className="form-control mb-3 gap-4">
+      <label className="form-control mb-3 gap-6">
         <span className="label-text">{dict.reservation.guests}</span>
         <input
           className="input input-bordered"
@@ -56,7 +56,7 @@ export default function ReservationForm({ dict }: { dict: Dictionary }) {
           required
         />
       </label>
-      <label className="form-control mb-3 gap-4">
+      <label className="form-control mb-3 gap-6">
         <span className="label-text">{dict.reservation.name}</span>
         <input
           className="input input-bordered"
@@ -65,7 +65,7 @@ export default function ReservationForm({ dict }: { dict: Dictionary }) {
           required
         />
       </label>
-      <label className="form-control mb-3 gap-4">
+      <label className="form-control mb-3 gap-6">
         <span className="label-text">{dict.reservation.phone}</span>
         <input
           className="input input-bordered"
@@ -75,7 +75,7 @@ export default function ReservationForm({ dict }: { dict: Dictionary }) {
           required
         />
       </label>
-      <label className="form-control mb-3 gap-4">
+      <label className="form-control mb-3 gap-6">
         <span className="label-text">{dict.reservation.email}</span>
         <input
           className="input input-bordered"
@@ -84,7 +84,7 @@ export default function ReservationForm({ dict }: { dict: Dictionary }) {
           onChange={(e) => setEmail(e.target.value)}
         />
       </label>
-      <label className="form-control mb-4 gap-4">
+      <label className="form-control mb-4 gap-6">
         <span className="label-text">{dict.reservation.note}</span>
         <textarea
           className="textarea textarea-bordered"

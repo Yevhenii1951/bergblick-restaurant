@@ -90,7 +90,7 @@ export default function StatsDashboard() {
         <p className="text-sm text-base-content/60">
           Geben Sie den Code des Restaurantbetreibers ein, um die Statistik zu sehen.
         </p>
-        <label className="form-control gap-4">
+        <label className="form-control gap-6">
           <span className="label-text">Code</span>
           <input
             className="input input-bordered"
