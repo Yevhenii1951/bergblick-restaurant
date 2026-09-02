@@ -77,7 +77,7 @@ export default function OrderForm({ dict }: { dict: Dictionary }) {
               : dict.takeaway.freeDelivery.replace('%price', formatPrice(freeDeliveryThreshold()))}
           </p>
 
-          <label className="form-control mb-5">
+          <label className="form-control mb-5 gap-2.5">
             <span className="label-text">{dict.takeaway.name}</span>
             <input
               className="input input-bordered"
@@ -87,7 +87,7 @@ export default function OrderForm({ dict }: { dict: Dictionary }) {
             />
           </label>
 
-          <label className="form-control mb-5">
+          <label className="form-control mb-5 gap-2.5">
             <span className="label-text">{dict.takeaway.phone}</span>
             <input
               className="input input-bordered"
@@ -98,7 +98,7 @@ export default function OrderForm({ dict }: { dict: Dictionary }) {
             />
           </label>
 
-          <label className="form-control mb-5">
+          <label className="form-control mb-5 gap-2.5">
             <span className="label-text">{dict.takeaway.pickupTime}</span>
             <input
               className="input input-bordered"
@@ -109,7 +109,7 @@ export default function OrderForm({ dict }: { dict: Dictionary }) {
             />
           </label>
 
-          <label className="form-control mb-5">
+          <label className="form-control mb-5 gap-2.5">
             <span className="label-text">{dict.takeaway.note}</span>
             <textarea
               className="textarea textarea-bordered"
