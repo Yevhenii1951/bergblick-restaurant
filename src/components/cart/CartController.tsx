@@ -4,7 +4,6 @@ import { ShoppingCart } from 'lucide-react'
 import type { Dictionary } from '../../i18n/types'
 import { formatPrice } from '../../lib/takeaway'
 import { cartItems, initCart } from '../../stores/cart'
-import CartDrawer from './CartDrawer'
 
 export default function CartController({
   dict,
@@ -14,7 +13,6 @@ export default function CartController({
   checkoutHref: string
 }) {
   const items = useStore(cartItems)
-  const [open, setOpen] = useState(false)
   const [ready, setReady] = useState(false)
 
   useEffect(() => {
@@ -26,17 +24,14 @@ export default function CartController({
   const total = items.reduce((sum, item) => sum + item.price * item.quantity, 0)
 
   return (
-    <>
-      <button
-        className="btn btn-ghost btn-sm gap-2"
-        onClick={() => setOpen(true)}
-        aria-label={dict.takeaway.cart}
-      >
-        <ShoppingCart aria-hidden="true" className="size-5 text-neutral" />
-        <span className="badge badge-primary badge-sm">{count}</span>
-        {ready && <span className="hidden sm:inline">{formatPrice(total)}</span>}
-      </button>
-      <CartDrawer dict={dict} open={open} onClose={() => setOpen(false)} checkoutHref={checkoutHref} />
-    </>
+    <a
+      href={checkoutHref}
+      className="btn btn-ghost btn-sm gap-2"
+      aria-label={dict.takeaway.cart}
+    >
+      <ShoppingCart aria-hidden="true" className="size-5 text-neutral" />
+      <span className="badge badge-primary badge-sm">{count}</span>
+      {ready && <span className="hidden sm:inline">{formatPrice(total)}</span>}
+    </a>
   )
 }
