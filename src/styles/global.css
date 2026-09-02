@@ -135,3 +135,8 @@
   opacity: 1;
   transform: none;
 }
+
+/* Replaces daisyUI button background (var(--btn-bg)) with a warm translucent tone */
+.btn {
+  background-color: rgb(71 54 73 / 30%) !important;
+}
