@@ -21,3 +21,9 @@ Status: implementation complete and verified.
 - Wire Netlify deploy + telegram/env in CI (out of scope here).
 - Reconcile spec (menu data location) with the implemented module.
 - Optional: add a photo gallery page (user story 12).
+
+## Update 2026-09-02
+
+- Reworked prominent section headings from bright gradient text to a calmer warm-brown style with very subtle motion.
+- Unified repeated script/tagline labels onto one softer animated style so pages feel more consistent and less flashy.
+- Verified with `npx astro check`; no errors introduced by the styling pass.

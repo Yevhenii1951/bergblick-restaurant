@@ -15,16 +15,16 @@ export default function GradientText({
   showBorder = false,
   style = {},
 }: GradientTextProps) {
-  const gradientStyle = {
-    backgroundImage: `linear-gradient(90deg, ${colors.join(', ')})`,
+  const titleStyle = {
+    color: colors[1] ?? colors[0] ?? '#5d4931',
     animationDuration: `${animationSpeed}s`,
     ...style,
   } as React.CSSProperties
 
   return (
     <span
-      className={`bg-clip-text bg-[length:200%_auto] animate-gradient text-transparent ${className}`}
-      style={gradientStyle}
+      className={`section-title-text ${showBorder ? 'section-title-bordered' : ''} ${className}`}
+      style={titleStyle}
     >
       {children}
     </span>
