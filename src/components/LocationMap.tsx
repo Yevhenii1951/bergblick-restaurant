@@ -38,9 +38,9 @@ export default function LocationMap({ dict }: { dict: Dictionary }) {
   const showMap = granted || nativeConsent
 
   return (
-    <div className="h-full overflow-hidden rounded-xl border border-base-300">
+    <div className="overflow-hidden rounded-xl border border-base-300">
       {!showMap ? (
-        <div className="flex h-full flex-col items-center justify-center gap-3 p-8 text-center">
+        <div className="flex flex-col items-center gap-3 p-8 text-center">
           <p className="text-base-content/70">{dict.contact.mapNotice}</p>
           <button className="btn btn-primary btn-sm" onClick={grantConsent}>
             {dict.legal.accept}
@@ -49,7 +49,7 @@ export default function LocationMap({ dict }: { dict: Dictionary }) {
       ) : (
         <div
           id="bergblick-map"
-          style={{ height: '100%', minHeight: 320, width: '100%' }}
+          style={{ height: 320, width: '100%' }}
           ref={(node) => {
             // leaflet needs the container before init; the effect handles init after mount
             void node
