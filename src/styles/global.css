@@ -122,6 +122,22 @@
   animation: gradient-move linear infinite;
 }
 
+@keyframes hero-accent-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-hero-accent {
+  opacity: 0;
+  animation: hero-accent-in 0.9s ease-out forwards;
+}
+
 .js .sr-hidden {
   opacity: 0;
   transform: var(--sr-offset, translateY(24px));
