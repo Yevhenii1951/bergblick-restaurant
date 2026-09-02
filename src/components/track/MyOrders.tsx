@@ -83,7 +83,7 @@ export default function MyOrders() {
   }
 
   return (
-    <form onSubmit={step === 'request' ? requestCode : verifyCode} className="space-y-10">
+    <form onSubmit={step === 'request' ? requestCode : verifyCode}>
       <label className="form-control mb-7 gap-3">
         <span className="label-text">E-Mail</span>
         <input
@@ -111,20 +111,20 @@ export default function MyOrders() {
       )}
 
       {codeDisplay && (
-        <p className="rounded-lg bg-base-200 px-4 py-2 text-sm">
+        <p className="mb-6 rounded-lg bg-base-200 px-4 py-2 text-sm">
           Demo-Code: <strong>{codeDisplay}</strong> (in einer echten Integration käme er per E-Mail)
         </p>
       )}
-      {error && <p className="text-sm text-error">{error}</p>}
+      {error && <p className="mb-6 text-sm text-error">{error}</p>}
 
       {step !== 'done' && (
-        <button className="btn btn-primary w-full rounded-lg font-semibold text-success!" type="submit" disabled={loading}>
+        <button className="btn btn-primary mt-12 w-full rounded-lg font-semibold text-success!" type="submit" disabled={loading}>
           {loading ? '…' : step === 'request' ? 'Code anfordern' : 'Bestätigen'}
         </button>
       )}
 
       {step === 'done' && (
-        <div className="space-y-3">
+        <div className="mt-8 space-y-3">
           <h3 className="font-display text-lg font-semibold">Ihre Bestellungen</h3>
           {orders.length === 0 ? (
             <p className="text-base-content/60">Für diese E-Mail wurden keine Bestellungen gefunden.</p>
