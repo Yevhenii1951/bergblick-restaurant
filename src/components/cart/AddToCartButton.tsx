@@ -17,7 +17,7 @@ export default function AddToCartButton({ dishId, name, price, label }: AddToCar
   return (
     <Magnet strength={20}>
       <button
-        className="btn btn-primary btn-sm rounded-full font-semibold"
+        className="btn btn-primary btn-sm rounded-lg font-semibold"
         onClick={() => addDish(dishId, name, price)}
       >
         {label}

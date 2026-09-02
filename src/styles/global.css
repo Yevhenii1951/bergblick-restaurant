@@ -6,47 +6,47 @@
   prefersdark: false;
   color-scheme: light;
 
-  /* Warm light-wood / oak palette */
-  --color-base-100: oklch(96% 0.02 80);
-  --color-base-200: oklch(93% 0.025 80);
-  --color-base-300: oklch(88% 0.03 80);
-  --color-base-content: oklch(28% 0.035 60);
+  /* daisyUI 5 retro palette (cream, brick-red primary, olive secondary, yellow accent) */
+  --color-base-100: oklch(91.637% 0.034 90.515);
+  --color-base-200: oklch(88.272% 0.049 91.774);
+  --color-base-300: oklch(84.133% 0.065 90.856);
+  --color-base-content: oklch(41% 0.112 45.904);
 
-  /* Amber / brass */
-  --color-primary: oklch(63% 0.14 70);
-  --color-primary-content: oklch(98% 0.01 80);
+  /* Brick / terracotta red */
+  --color-primary: oklch(80% 0.114 19.571);
+  --color-primary-content: oklch(39% 0.141 25.723);
 
-  /* Forest green */
-  --color-secondary: oklch(42% 0.06 140);
-  --color-secondary-content: oklch(97% 0.01 140);
+  /* Olive green */
+  --color-secondary: oklch(92% 0.084 155.995);
+  --color-secondary-content: oklch(44% 0.119 151.328);
 
-  /* Terracotta */
-  --color-accent: oklch(58% 0.13 45);
-  --color-accent-content: oklch(98% 0.01 45);
+  /* Yellow / amber */
+  --color-accent: oklch(68% 0.162 75.834);
+  --color-accent-content: oklch(41% 0.112 45.904);
 
-  /* Warm charcoal */
-  --color-neutral: oklch(29% 0.03 60);
-  --color-neutral-content: oklch(96% 0.015 80);
+  /* Dark grey-brown */
+  --color-neutral: oklch(44% 0.011 73.639);
+  --color-neutral-content: oklch(86% 0.005 56.366);
 
-  --color-info: oklch(62% 0.1 220);
-  --color-info-content: oklch(98% 0.01 220);
-  --color-success: oklch(58% 0.12 150);
-  --color-success-content: oklch(98% 0.01 150);
-  --color-warning: oklch(82% 0.14 80);
-  --color-warning-content: oklch(25% 0.04 60);
-  --color-error: oklch(60% 0.18 30);
-  --color-error-content: oklch(98% 0.01 30);
+  --color-info: oklch(58% 0.158 241.966);
+  --color-info-content: oklch(96% 0.059 95.617);
+  --color-success: oklch(51% 0.096 186.391);
+  --color-success-content: oklch(96% 0.059 95.617);
+  --color-warning: oklch(64% 0.222 41.116);
+  --color-warning-content: oklch(96% 0.059 95.617);
+  --color-error: oklch(70% 0.191 22.216);
+  --color-error-content: oklch(40% 0.123 38.172);
 
-  --radius-selector: 0.75rem;
-  --radius-field: 0.5rem;
-  --radius-box: 1.25rem;
+  --radius-selector: 0.25rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0.5rem;
 
   --size-selector: 0.25rem;
   --size-field: 0.25rem;
 
   --border: 1px;
 
-  --depth: 1;
+  --depth: 0;
   --noise: 0;
 }
 
@@ -82,17 +82,17 @@
 }
 
 @layer utilities {
-  /* subtle wood-grain readable texture (very light) */
+  /* subtle cream/olive texture matching retro base tones */
   .texture-wood {
     background-image:
       radial-gradient(
         1200px 500px at 80% -10%,
-        oklch(93% 0.03 85 / 0.5),
+        oklch(91% 0.03 90 / 0.5),
         transparent 60%
       ),
       radial-gradient(
         900px 400px at 10% 110%,
-        oklch(90% 0.03 60 / 0.4),
+        oklch(88% 0.05 92 / 0.4),
         transparent 55%
       );
   }
@@ -101,7 +101,7 @@
     background-image:
       radial-gradient(
         1000px 600px at 60% -20%,
-        oklch(35% 0.04 60 / 0.6),
+        oklch(48% 0.02 70 / 0.6),
         transparent 60%
       );
   }

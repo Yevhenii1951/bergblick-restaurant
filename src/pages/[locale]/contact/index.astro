@@ -21,7 +21,7 @@ const dict = getDictionary(locale)
     <div class="mx-auto max-w-6xl px-6 py-16 md:py-24">
       <ScrollReveal>
         <div class="mx-auto mb-12 max-w-2xl text-center">
-          <p class="font-script text-2xl text-accent md:text-3xl">{dict.tagline}</p>
+          <p class="font-script text-2xl text-primary md:text-3xl">{dict.tagline}</p>
           <h1 class="mt-2 text-4xl font-semibold md:text-5xl">
             <GradientText>{dict.contact.title}</GradientText>
           </h1>
@@ -30,22 +30,22 @@ const dict = getDictionary(locale)
 
       <div class="grid gap-8 lg:grid-cols-2">
         <ScrollReveal delay={120}>
-          <section class="h-full rounded-3xl border border-base-300 bg-base-100 p-8 shadow-sm">
+          <section class="h-full rounded-xl border border-base-300 bg-base-100 p-8 shadow-sm">
             <div class="flex items-center gap-3">
-              <span class="grid h-11 w-11 place-items-center rounded-2xl bg-primary/10 text-xl">📍</span>
+              <span class="grid h-11 w-11 place-items-center rounded-lg bg-primary/10 text-xl">📍</span>
               <h2 class="font-display text-xl font-semibold">{dict.contact.address}</h2>
             </div>
             <p class="mt-4 text-base-content/80">{SITE.address.street}</p>
             <p class="text-base-content/80">{SITE.address.city}</p>
 
             <div class="mt-8 flex items-center gap-3">
-              <span class="grid h-11 w-11 place-items-center rounded-2xl bg-accent/10 text-xl">🕒</span>
+              <span class="grid h-11 w-11 place-items-center rounded-lg bg-accent/10 text-xl">🕒</span>
               <h2 class="font-display text-xl font-semibold">{dict.contact.hours}</h2>
             </div>
             <p class="mt-4 text-base-content/80">{SITE.hours}</p>
 
             <div class="mt-8 flex items-center gap-3">
-              <span class="grid h-11 w-11 place-items-center rounded-2xl bg-secondary/10 text-xl">📞</span>
+              <span class="grid h-11 w-11 place-items-center rounded-lg bg-secondary/10 text-xl">📞</span>
               <h2 class="font-display text-xl font-semibold">{dict.contact.phone}</h2>
             </div>
             <a class="mt-4 inline-block text-lg font-semibold text-primary hover:underline" href={`tel:${SITE.phone}`}>

@@ -126,7 +126,7 @@ export default function OrderForm({ dict }: { dict: Dictionary }) {
           )}
 
           <button
-            className="btn btn-primary w-full rounded-full font-semibold"
+            className="btn btn-primary w-full rounded-lg font-semibold"
             type="submit"
             disabled={status === 'sending'}
           >

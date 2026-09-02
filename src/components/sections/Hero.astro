@@ -29,12 +29,12 @@ const { dict, locale } = Astro.props
     </h1>
     <p class="mt-6 max-w-xl text-lg text-neutral-content/75 md:text-xl">{dict.hero.subtitle}</p>
     <div class="mt-9 flex flex-wrap gap-3">
-      <a href={`/${locale}/menu/`} class="btn btn-primary btn-lg rounded-full px-7 shadow-lg shadow-primary/20">
+      <a href={`/${locale}/menu/`} class="btn btn-primary btn-lg rounded-lg px-7 shadow-lg shadow-primary/20">
         {dict.hero.ctaMenu}
       </a>
       <a
         href={`/${locale}/reservation/`}
-        class="btn btn-outline btn-lg rounded-full border-neutral-content/30 text-neutral-content hover:border-neutral-content hover:bg-neutral-content hover:text-neutral"
+        class="btn btn-outline btn-lg rounded-lg border-neutral-content/40 text-neutral-content hover:border-neutral-content hover:bg-neutral-content hover:text-neutral"
       >
         {dict.hero.ctaReserve}
       </a>

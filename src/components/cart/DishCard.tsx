@@ -24,7 +24,7 @@ export default function DishCard({
 }: DishCardProps) {
   return (
     <TiltedCard className="h-full">
-      <div className="group flex h-full flex-col overflow-hidden rounded-2xl border border-base-300 bg-base-100 shadow-sm transition-shadow hover:shadow-xl">
+      <div className="group flex h-full flex-col overflow-hidden rounded-xl border border-base-300 bg-base-100 shadow-sm transition-shadow hover:shadow-xl">
         {image && (
           <div className="relative h-40 overflow-hidden">
             <img
