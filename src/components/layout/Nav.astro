@@ -1,0 +1,73 @@
+---
+import type { Dictionary } from '../../i18n/types'
+import { locales, localeNames, type Locale } from '../../i18n/config'
+import CartController from '../cart/CartController'
+
+interface Props {
+  dict: Dictionary
+  locale: Locale
+  pathname: string
+}
+
+const { dict, locale, pathname } = Astro.props
+
+function stripLocale(p: string): string {
+  const parts = p.split('/')
+  if (parts[1] && locales.includes(parts[1] as Locale)) {
+    return '/' + parts.slice(2).join('/')
+  }
+  return p
+}
+
+const base = stripLocale(pathname) || '/'
+---
+
+<nav class="navbar sticky top-0 z-[300] bg-base-100/90 backdrop-blur-md shadow-sm">
+  <div class="navbar-start">
+    <a href={`/${locale}/`} class="btn btn-ghost text-xl font-bold">
+      Bergblick
+    </a>
+  </div>
+
+  <div class="navbar-center hidden lg:flex">
+    <ul class="menu menu-horizontal px-1">
+      <li><a href={`/${locale}/`}>{dict.nav.home}</a></li>
+      <li><a href={`/${locale}/menu/`}>{dict.nav.menu}</a></li>
+      <li><a href={`/${locale}/about/`}>{dict.nav.about}</a></li>
+      <li><a href={`/${locale}/contact/`}>{dict.nav.contact}</a></li>
+    </ul>
+  </div>
+
+  <div class="navbar-end gap-2">
+    <div class="dropdown dropdown-end">
+      <div tabindex="0" role="button" class="btn btn-ghost btn-sm">
+        {localeNames[locale]} ▾
+      </div>
+      <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-[400] w-40 shadow-lg">
+        {locales.map((l) => (
+          <li>
+            <a href={`/${l}${base}`} class={l === locale ? 'active' : ''}>
+              {localeNames[l]}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <a href={`/${locale}/takeaway/`} class="btn btn-primary btn-sm hidden md:inline-flex">
+      {dict.nav.takeaway}
+    </a>
+
+    <CartController
+      dict={dict}
+      checkoutHref={`/${locale}/takeaway/`}
+      client:visible
+    />
+  </div>
+</nav>
+
+<style>
+  .navbar {
+    position: sticky;
+  }
+</style>

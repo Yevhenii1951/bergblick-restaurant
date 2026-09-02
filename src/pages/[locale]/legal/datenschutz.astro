@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro'
+import { getDictionary } from '../../../i18n'
+import type { Locale } from '../../../i18n/config'
+
+export async function getStaticPaths() {
+  const locales: Locale[] = ['de', 'ru', 'en']
+  return locales.map((locale) => ({ params: { locale } }))
+}
+
+const { locale } = Astro.params as { locale: Locale }
+const dict = getDictionary(locale)
+---
+
+<BaseLayout locale={locale} title={dict.legal.datenschutz}>
+  <div class="mx-auto max-w-3xl px-6 py-16">
+    <h1 class="text-3xl font-bold">{dict.legal.datenschutz}</h1>
+    <div class="prose mt-6 space-y-4">
+      <h2>1. Datenschutz auf einen Blick</h2>
+      <p>
+        Diese Website ist ein Trainingsprojekt. Es werden keine personenbezogenen Daten
+        dauerhaft gespeichert. Strukturierte Daten (z. B. Bestellungen im Takeaway) werden
+        ausschließlich zur Demo an die konfigurierte Telegram-Adresse übertragen.
+      </p>
+
+      <h2>2. Karten und externe Dienste</h2>
+      <p>
+        Die Standortkarte (OpenStreetMap) wird erst nach Ihrer Zustimmung über die
+        Cookie-Abfrage geladen. Erst dann werden Daten an den Kartendienst übertragen.
+      </p>
+
+      <h2>3. Ihre Rechte</h2>
+      <p>
+        Sie haben das Recht auf Auskunft, Berichtigung und Löschung Ihrer Daten. Wenden Sie
+        sich dafür an die im Impressum genannten Kontaktdaten.
+      </p>
+    </div>
+  </div>
+</BaseLayout>

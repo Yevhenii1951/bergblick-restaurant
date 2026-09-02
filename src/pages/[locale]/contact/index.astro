@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro'
+import LocationMap from '../../../components/LocationMap.tsx'
+import { getDictionary } from '../../../i18n'
+import { SITE } from '../../../lib/config'
+import type { Locale } from '../../../i18n/config'
+
+export async function getStaticPaths() {
+  const locales: Locale[] = ['de', 'ru', 'en']
+  return locales.map((locale) => ({ params: { locale } }))
+}
+
+const { locale } = Astro.params as { locale: Locale }
+const dict = getDictionary(locale)
+---
+
+<BaseLayout locale={locale} title={dict.contact.title}>
+  <div class="mx-auto max-w-6xl px-6 py-16">
+    <h1 class="text-3xl font-bold">{dict.contact.title}</h1>
+
+    <div class="mt-8 grid gap-8 lg:grid-cols-2">
+      <section class="card bg-base-200">
+        <div class="card-body">
+          <h2 class="card-title">{dict.contact.address}</h2>
+          <p>{SITE.address.street}</p>
+          <p>{SITE.address.city}</p>
+
+          <h2 class="card-title mt-4">{dict.contact.hours}</h2>
+          <p>{SITE.hours}</p>
+
+          <h2 class="card-title mt-4">{dict.contact.phone}</h2>
+          <a class="link" href={`tel:${SITE.phone}`}>{SITE.phone}</a>
+        </div>
+      </section>
+
+      <LocationMap dict={dict} client:only="react" />
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro'
+import { getDictionary } from '../../../i18n'
+import { SITE } from '../../../lib/config'
+import type { Locale } from '../../../i18n/config'
+
+export async function getStaticPaths() {
+  const locales: Locale[] = ['de', 'ru', 'en']
+  return locales.map((locale) => ({ params: { locale } }))
+}
+
+const { locale } = Astro.params as { locale: Locale }
+const dict = getDictionary(locale)
+---
+
+<BaseLayout locale={locale} title={dict.legal.impressum}>
+  <div class="mx-auto max-w-3xl px-6 py-16">
+    <h1 class="text-3xl font-bold">{dict.legal.impressum}</h1>
+    <div class="prose mt-6 space-y-4">
+      <p>
+        <strong>{SITE.name}</strong>
+        <br />
+        {SITE.address.street}
+        <br />
+        {SITE.address.city}
+      </p>
+      <p>
+        {dict.contact.phone}: {SITE.phone}
+      </p>
+      <p>
+        Geschäftsführung: Max Mustermann
+        <br />
+        Umsatzsteuer-ID: DE000000000
+      </p>
+      <p>
+        Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV: Max Mustermann
+      </p>
+      <p>
+        Hinweis: Dieses Projekt ist ein <em>Trainingsprojekt</em>. Die Inhalte sind fiktiv und
+        dienen ausschließlich Lernzwecken.
+      </p>
+    </div>
+  </div>
+</BaseLayout>

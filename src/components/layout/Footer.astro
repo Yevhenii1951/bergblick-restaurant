@@ -1,0 +1,44 @@
+---
+import type { Dictionary } from '../../i18n/types'
+import type { Locale } from '../../i18n/config'
+import { SITE } from '../../lib/config'
+
+interface Props {
+  dict: Dictionary
+  locale: Locale
+}
+
+const { dict, locale } = Astro.props
+---
+
+<footer class="bg-neutral text-neutral-content mt-16">
+  <div class="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-6 py-10 md:grid-cols-3">
+    <div>
+      <h3 class="mb-2 text-lg font-bold">{SITE.name}</h3>
+      <p>{dict.tagline}</p>
+    </div>
+    <div>
+      <h3 class="mb-2 text-lg font-bold">{dict.contact.hours}</h3>
+      <p>{SITE.hours}</p>
+      <p class="mt-2">{SITE.address.street}, {SITE.address.city}</p>
+    </div>
+    <div>
+      <h3 class="mb-2 text-lg font-bold">Links</h3>
+      <ul class="space-y-1">
+        <li><a class="link" href={`/${locale}/menu/`}>{dict.nav.menu}</a></li>
+        <li><a class="link" href={`/${locale}/about/`}>{dict.nav.about}</a></li>
+        <li><a class="link" href={`/${locale}/contact/`}>{dict.nav.contact}</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="border-t border-neutral-content/20 px-6 py-4">
+    <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 text-sm md:flex-row">
+      <p>© {new Date().getFullYear()} {SITE.name}. {dict.footer.rights}</p>
+      <div class="flex gap-4">
+        <a class="link" href={`/${locale}/legal/impressum/`}>{dict.legal.impressum}</a>
+        <a class="link" href={`/${locale}/legal/datenschutz/`}>{dict.legal.datenschutz}</a>
+      </div>
+    </div>
+  </div>
+</footer>

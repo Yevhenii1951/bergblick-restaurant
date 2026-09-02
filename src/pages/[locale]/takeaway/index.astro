@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro'
+import OrderForm from '../../../components/cart/OrderForm'
+import { getDictionary } from '../../../i18n'
+import type { Locale } from '../../../i18n/config'
+
+export async function getStaticPaths() {
+  const locales: Locale[] = ['de', 'ru', 'en']
+  return locales.map((locale) => ({ params: { locale } }))
+}
+
+const { locale } = Astro.params as { locale: Locale }
+const dict = getDictionary(locale)
+---
+
+<BaseLayout locale={locale} title={dict.takeaway.title}>
+  <div class="mx-auto max-w-3xl px-6 py-16">
+    <h1 class="text-3xl font-bold">{dict.takeaway.title}</h1>
+    <p class="mt-2 text-base-content/70">{dict.takeaway.subtitle}</p>
+    <div class="mt-8">
+      <OrderForm dict={dict} client:only="react" />
+    </div>
+  </div>
+</BaseLayout>
