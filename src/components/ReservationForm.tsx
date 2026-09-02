@@ -92,7 +92,7 @@ export default function ReservationForm({ dict }: { dict: Dictionary }) {
           onChange={(e) => setNote(e.target.value)}
         />
       </label>
-      <button type="submit" className="btn btn-primary w-full rounded-lg font-semibold">
+      <button type="submit" className="btn btn-primary w-full rounded-lg font-semibold text-success!">
         {dict.reservation.submit}
       </button>
     </form>
