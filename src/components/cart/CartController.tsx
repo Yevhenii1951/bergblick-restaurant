@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { ShoppingCart } from 'lucide-react'
 import type { Dictionary } from '../../i18n/types'
 import { formatPrice } from '../../lib/takeaway'
-import { cartItems, initCart } from '../../stores/cart'
+import { cartItems, cartCountValue, cartTotalValue, initCart } from '../../stores/cart'
 
 export default function CartController({
   dict,
@@ -20,8 +20,8 @@ export default function CartController({
     setReady(true)
   }, [])
 
-  const count = items.reduce((sum, item) => sum + item.quantity, 0)
-  const total = items.reduce((sum, item) => sum + item.price * item.quantity, 0)
+  const count = cartCountValue()
+  const total = cartTotalValue()
 
   return (
     <a

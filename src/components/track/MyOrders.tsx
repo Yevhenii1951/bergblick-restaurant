@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, type FormEvent } from 'react'
 
 type TrackOrder = {
   id: string
@@ -24,7 +24,7 @@ export default function MyOrders() {
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
 
-  async function requestCode(e: React.FormEvent<HTMLFormElement>) {
+  async function requestCode(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
     setError('')
     setLoading(true)
@@ -48,7 +48,7 @@ export default function MyOrders() {
     }
   }
 
-  async function verifyCode(e: React.FormEvent<HTMLFormElement>) {
+  async function verifyCode(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
     setError('')
     setLoading(true)

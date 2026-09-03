@@ -2,11 +2,15 @@ import { createHmac } from 'crypto'
 import { sql } from '@vercel/postgres'
 import type { VercelRequest, VercelResponse } from '@vercel/node'
 
-const TOKEN_SECRET = process.env.AUTH_TOKEN_SECRET ?? 'dev-secret'
+function getTokenSecret(): string {
+  const secret = process.env.AUTH_TOKEN_SECRET
+  if (!secret) throw new Error('AUTH_TOKEN_SECRET is not set')
+  return secret
+}
 
 function signToken(email: string, expiresAt: number): string {
   const payload = `${email}|${expiresAt}`
-  const sig = createHmac('sha256', TOKEN_SECRET).update(payload).digest('hex')
+  const sig = createHmac('sha256', getTokenSecret()).update(payload).digest('hex')
   return Buffer.from(`${payload}.${sig}`).toString('base64url')
 }
 

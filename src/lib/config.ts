@@ -5,11 +5,6 @@ export const DELIVERY = {
   locale: 'de-DE',
 }
 
-export const TELEGRAM = {
-  botToken: import.meta.env.PUBLIC_TELEGRAM_BOT_TOKEN ?? '',
-  chatId: import.meta.env.PUBLIC_TELEGRAM_CHAT_ID ?? '',
-}
-
 export const SITE = {
   name: 'Bergblick',
   phone: '+49 561 123456',

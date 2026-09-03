@@ -1,8 +1,13 @@
 import { createHmac, timingSafeEqual } from 'crypto'
 import { sql } from '@vercel/postgres'
 import type { VercelRequest, VercelResponse } from '@vercel/node'
+import { ORDERS_DDL } from './orders'
 
-const TOKEN_SECRET = process.env.AUTH_TOKEN_SECRET ?? 'dev-secret'
+function getTokenSecret(): string {
+  const secret = process.env.AUTH_TOKEN_SECRET
+  if (!secret) throw new Error('AUTH_TOKEN_SECRET is not set')
+  return secret
+}
 
 function verifyEmail(token: string): string | null {
   try {
@@ -11,7 +16,7 @@ function verifyEmail(token: string): string | null {
     if (sep === -1) return null
     const payload = decoded.slice(0, sep)
     const sig = decoded.slice(sep + 1)
-    const expected = createHmac('sha256', TOKEN_SECRET).update(payload).digest('hex')
+    const expected = createHmac('sha256', getTokenSecret()).update(payload).digest('hex')
     const sigBuf = Buffer.from(sig)
     const expBuf = Buffer.from(expected)
     if (sigBuf.length !== expBuf.length || !timingSafeEqual(sigBuf, expBuf)) return null
@@ -39,18 +44,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   try {
-    await sql`create table if not exists orders (
-        id uuid primary key default gen_random_uuid(),
-        created_at timestamptz not null default now(),
-        email text,
-        name text not null,
-        phone text not null,
-        pickup_time text,
-        note text,
-        total_cents integer not null,
-        free_delivery boolean not null default false,
-        items jsonb not null default '[]'
-      )`
+    await ORDERS_DDL
     const { rows } = await sql`
       select id, created_at, name, total_cents, free_delivery, items
       from orders

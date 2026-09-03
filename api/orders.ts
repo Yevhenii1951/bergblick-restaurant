@@ -1,5 +1,21 @@
 import { sql } from '@vercel/postgres'
 import type { VercelRequest, VercelResponse } from '@vercel/node'
+import { sendOrderTelegram } from './_telegram'
+
+export const ORDERS_DDL = sql`
+  create table if not exists orders (
+    id uuid primary key default gen_random_uuid(),
+    created_at timestamptz not null default now(),
+    email text,
+    name text not null,
+    phone text not null,
+    pickup_time text,
+    note text,
+    total_cents integer not null,
+    free_delivery boolean not null default false,
+    items jsonb not null default '[]'
+  )
+`
 
 type OrderItem = {
   name: string
@@ -48,24 +64,14 @@ async function handlePost(req: VercelRequest, res: VercelResponse) {
 
   if (!process.env.POSTGRES_URL) {
     // Demo fallback when DB not configured (training behaviour)
+    sendOrderTelegram(body).catch((err) => {
+      console.error('Telegram notification failed', err)
+    })
     return res.status(200).json({ id: 'demo', persisted: false })
   }
 
   try {
-    await sql`
-      create table if not exists orders (
-        id uuid primary key default gen_random_uuid(),
-        created_at timestamptz not null default now(),
-        email text,
-        name text not null,
-        phone text not null,
-        pickup_time text,
-        note text,
-        total_cents integer not null,
-        free_delivery boolean not null default false,
-        items jsonb not null default '[]'
-      )
-    `
+    await ORDERS_DDL
     const insert = await sql`
       insert into orders (email, name, phone, pickup_time, note, total_cents, free_delivery, items)
       values (${email ?? null}, ${name}, ${phone}, ${pickupTime ?? null}, ${note ?? null},
@@ -73,6 +79,9 @@ async function handlePost(req: VercelRequest, res: VercelResponse) {
       returning id
     `
     res.status(201).json({ id: insert.rows[0].id, persisted: true })
+    sendOrderTelegram(body).catch((err) => {
+      console.error('Telegram notification failed', err)
+    })
   } catch (err) {
     console.error('POST /api/orders failed', err)
     res.status(500).json({ error: 'Failed to persist order' })
@@ -91,18 +100,7 @@ async function handleGet(req: VercelRequest, res: VercelResponse) {
   }
 
   try {
-    await sql`create table if not exists orders (
-        id uuid primary key default gen_random_uuid(),
-        created_at timestamptz not null default now(),
-        email text,
-        name text not null,
-        phone text not null,
-        pickup_time text,
-        note text,
-        total_cents integer not null,
-        free_delivery boolean not null default false,
-        items jsonb not null default '[]'
-      )`
+    await ORDERS_DDL
     const { rows } = await sql`
       select id, created_at, email, name, total_cents, free_delivery, items
       from orders

@@ -1,23 +1,32 @@
 import { atom } from 'nanostores'
-import { addItem, cartTotal, removeItem, setItemQuantity, type CartItem } from '../lib/cartStore'
+import { addItem, cartCount, cartTotal, removeItem, setItemQuantity, type CartItem } from '../lib/cartStore'
 
 export const cartItems = atom<CartItem[]>([])
 
 const STORAGE_KEY = 'bergblick-cart'
 
+let subscriptionInitialized = false
+
+function persist(items: readonly CartItem[]): void {
+  if (typeof window !== 'undefined') {
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(items))
+  }
+}
+
 export function initCart(): void {
   if (typeof window === 'undefined') return
+
   try {
     const raw = window.localStorage.getItem(STORAGE_KEY)
     if (raw) cartItems.set(JSON.parse(raw) as CartItem[])
   } catch {
     /* ignore corrupt storage */
   }
-  cartItems.subscribe((items) => {
-    if (typeof window !== 'undefined') {
-      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(items))
-    }
-  })
+
+  if (!subscriptionInitialized) {
+    subscriptionInitialized = true
+    cartItems.subscribe(persist)
+  }
 }
 
 export function addDish(dishId: string, name: string, price: number): void {
@@ -37,7 +46,7 @@ export function clearCart(): void {
 }
 
 export function cartCountValue(): number {
-  return cartItems.get().reduce((sum, item) => sum + item.quantity, 0)
+  return cartCount(cartItems.get())
 }
 
 export function cartTotalValue(): number {

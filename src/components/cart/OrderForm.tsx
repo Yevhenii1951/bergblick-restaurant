@@ -6,8 +6,7 @@ import {
   formatPrice,
   freeDeliveryThreshold,
 } from '../../lib/takeaway'
-import { sendOrderTelegram } from '../../lib/telegram'
-import { cartItems, clearCart, initCart } from '../../stores/cart'
+import { cartItems, cartTotalValue, clearCart, initCart } from '../../stores/cart'
 
 export default function OrderForm({ dict }: { dict: Dictionary }) {
   const items = useStore(cartItems)
@@ -22,44 +21,37 @@ export default function OrderForm({ dict }: { dict: Dictionary }) {
     initCart()
   }, [])
 
-  const total = items.reduce((sum, item) => sum + item.price * item.quantity, 0)
+  const total = cartTotalValue()
   const free = freeDeliveryReached(total)
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
     setStatus('sending')
-    const order = {
+    const payload = {
       items: items.map((item) => ({
         name: item.name,
         quantity: item.quantity,
         price: item.price,
-        total: item.price * item.quantity,
       })),
       total,
       freeDelivery: free,
       contact: { email, name, phone, pickupTime, note },
     }
     try {
-      await fetch('/api/orders', {
+      const res = await fetch('/api/orders', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          items: order.items.map(({ total: _t, ...rest }) => rest),
-          total,
-          freeDelivery: free,
-          contact: order.contact,
-        }),
+        body: JSON.stringify(payload),
       })
+      if (!res.ok) {
+        setStatus('error')
+        return
+      }
     } catch {
-      // DB offline (e.g. local dev) - order still delivered via Telegram
+      // DB offline (e.g. local dev) - order processed server-side
     }
-    const ok = await sendOrderTelegram(order)
-    if (ok) {
-      setStatus('success')
-      clearCart()
-    } else {
-      setStatus('error')
-    }
+    setStatus('success')
+    clearCart()
   }
 
   return (

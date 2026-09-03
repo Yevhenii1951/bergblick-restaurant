@@ -1,5 +1,6 @@
 import { sql } from '@vercel/postgres'
 import type { VercelRequest, VercelResponse } from '@vercel/node'
+import { ORDERS_DDL } from './orders'
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (process.env.ADMIN_CODE && req.headers['x-admin-code'] !== process.env.ADMIN_CODE) {
@@ -18,18 +19,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   try {
-    await sql`create table if not exists orders (
-        id uuid primary key default gen_random_uuid(),
-        created_at timestamptz not null default now(),
-        email text,
-        name text not null,
-        phone text not null,
-        pickup_time text,
-        note text,
-        total_cents integer not null,
-        free_delivery boolean not null default false,
-        items jsonb not null default '[]'
-      )`
+    await ORDERS_DDL
 
     const totals = await sql`
       select
@@ -52,7 +42,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const topDishes = await sql`
       select item_name as name,
              sum(item_qty)::int                        as total_sold,
-             sum((item_price * 100)::int * item_qty)::int as revenue_cents
+             sum((item_price * 100) * item_qty)::int      as revenue_cents
       from orders, jsonb_to_recordset(items) as t(
         item_name text, item_qty int, item_price numeric
       )

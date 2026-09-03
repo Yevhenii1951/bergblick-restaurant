@@ -3,8 +3,7 @@ import { useEffect, useState, type FormEvent } from 'react'
 import type { Dictionary } from '../../i18n/types'
 import { DELIVERY, SITE } from '../../lib/config'
 import { formatPrice, freeDeliveryReached, freeDeliveryThreshold } from '../../lib/takeaway'
-import { sendOrderTelegram } from '../../lib/telegram'
-import { cartItems, changeQuantity, clearCart, initCart, removeDish } from '../../stores/cart'
+import { cartItems, cartCountValue, cartTotalValue, changeQuantity, clearCart, initCart, removeDish } from '../../stores/cart'
 
 type DeliveryMode = 'pickup' | 'delivery'
 
@@ -24,8 +23,8 @@ export default function CartPage({ dict }: { dict: Dictionary }) {
     setReady(true)
   }, [])
 
-  const total = items.reduce((sum, item) => sum + item.price * item.quantity, 0)
-  const count = items.reduce((sum, item) => sum + item.quantity, 0)
+  const total = cartTotalValue()
+  const count = cartCountValue()
   const free = freeDeliveryReached(total)
   const deliveryFee = mode === 'delivery' && !free ? DELIVERY.deliveryFee : 0
   const grandTotal = total + deliveryFee
@@ -33,38 +32,31 @@ export default function CartPage({ dict }: { dict: Dictionary }) {
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
     setStatus('sending')
-    const order = {
+    const payload = {
       items: items.map((item) => ({
         name: item.name,
         quantity: item.quantity,
         price: item.price,
-        total: item.price * item.quantity,
       })),
       total: grandTotal,
       freeDelivery: free,
       contact: { email, name, phone, pickupTime, note, mode },
     }
     try {
-      await fetch('/api/orders', {
+      const res = await fetch('/api/orders', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          items: order.items.map(({ total: _t, ...rest }) => rest),
-          total: grandTotal,
-          freeDelivery: free,
-          contact: order.contact,
-        }),
+        body: JSON.stringify(payload),
       })
+      if (!res.ok) {
+        setStatus('error')
+        return
+      }
     } catch {
-      // DB offline (e.g. local dev) - order still delivered via Telegram
+      // DB offline (e.g. local dev) - order processed server-side
     }
-    const ok = await sendOrderTelegram(order)
-    if (ok) {
-      setStatus('success')
-      clearCart()
-    } else {
-      setStatus('error')
-    }
+    setStatus('success')
+    clearCart()
   }
 
   if (!ready) return null
